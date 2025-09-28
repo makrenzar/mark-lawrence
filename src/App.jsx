@@ -1,12 +1,12 @@
 
-import Makren from './pages/Makren'
+import Home from './pages/Home'
 
 function App() {
 
 
   return (
     <>
-   <Makren></Makren>
+   <Home></Home>
     </>
   )
 }

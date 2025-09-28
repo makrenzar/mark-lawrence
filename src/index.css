@@ -1,8 +1,46 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 @import "tailwindcss";
 
-body {
-  color: #222222;
-  font-family: "Roboto", sans-serif;
+::-webkit-scrollbar {
+  background-color: transparent;
+  width: 8px;
+  height: 8px;
 }
 
+::-webkit-scrollbar-thumb {
+  background: #222222;
+  border-radius: 10px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--light);
+  color: var(--dark);
+
+  font-family: "Figtree", sans-serif;
+  font-optical-sizing: auto;
+}
+
+
+
+
+
+@keyframes marquee-seamless {
+          100% {
+            transform: translateX(0);
+          }
+          0% {
+            transform: translateX(-33.333%);
+          }
+        }
+        
+        .animate-marquee-seamless {
+          animation: marquee-seamless 20s linear infinite;
+        }
+        
+        .animate-marquee-seamless:hover {
+          animation-play-state: paused;
+        }
