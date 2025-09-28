@@ -9,7 +9,7 @@ import img5 from "../assets/5.png";
 
 const Home = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);
-  const [expandedFAQs, setExpandedFAQs] = useState([0]); // First FAQ expanded by default
+  const [expandedFAQs, setExpandedFAQs] = useState([0]);
 
   const works = [
     { imageSrc: img1 },
@@ -64,46 +64,54 @@ const Home = () => {
             <div className='p-3'>
               <header className="flex items-center justify-between">
                 <div className="flex items-center space-x-2 px-2 py-2">
-                  {/* Dark Mode Toggle */}
+                  {/* Toggle */}
                   <button
                     onClick={toggleDarkMode}
                     className={`relative cursor-pointer w-7 h-4 flex items-center rounded-full p-1 transition-colors duration-300 ${isDarkMode ? "bg-[#191B1C]" : "bg-[#e7e7e7]"
                       }`}
                   >
                     <div
-                      className={`w-[9px] h-[9px] rounded-full shadow-md transform transition-all duration-300 ${isDarkMode ? "translate-x-3 bg-[#f5f5f5]" : "translate-x-0 bg-[#222222]"
-                        }`}
+                      className={`w-[9px] h-[9px] rounded-full shadow-md transform transition-all duration-300 ${isDarkMode ? "translate-x-3 bg-[#f5f5f5]" : "translate-x-0 bg-[#222222]"} `}
                     ></div>
                   </button>
+
+                  {/* Location - always visible */}
                   <span
                     className={`font-medium text-xs transition-colors duration-300 ${isDarkMode ? "text-[#f5f5f5]" : "text-[#222222]"
                       }`}
                   >
                     Iloilo City, Philippines
                   </span>
-                  <div className="group flex items-center cursor-pointer relative overflow-hidden">
-                    <div className="w-5 h-2 bg-[#2cdc3e] rounded-full ml-2 transition-all duration-300 group-hover:w-2"></div>
+
+                  {/* Phone + Availability - hidden on mobile */}
+                  <div className="hidden md:flex items-center cursor-pointer relative overflow-hidden group">
+                    <div className="w-4 h-2 bg-[#2cdc3e] rounded-full ml-2 transition-all duration-300 group-hover:w-2"></div>
                     <div className="ml-1 relative">
-                      <span className="text-xs text-[#2cdc3e] block translate-y-0 transition-transform duration-300 ease-in-out group-hover:-translate-y-[150%]">+63 976 301 3967</span>
-                      <span className="text-xs text-[#2cdc3e] absolute top-0 left-0 translate-y-[150%] transition-transform duration-300 ease-in-out group-hover:translate-y-0">Available</span>
+                      <span className="text-xs text-[#2cdc3e] block translate-y-0 transition-transform duration-300 ease-in-out group-hover:-translate-y-[150%]">
+                        +63 976 301 3967
+                      </span>
+                      <span className="text-xs text-[#2cdc3e] absolute top-0 left-0 translate-y-[150%] transition-transform duration-300 ease-in-out group-hover:translate-y-0">
+                        Available
+                      </span>
                     </div>
                   </div>
                 </div>
+
+                {/* Right side */}
                 <div className="flex items-center space-x-2 flex-grow mx-2">
                   <div
-                    className={`flex-grow border-t transition-colors duration-300 ${isDarkMode ? "border-[#afafaf]" : "border-[#e0e0e0]"
-                      }`}
+                    className={`flex-grow border-t transition-colors duration-300 ${isDarkMode ? "border-[#afafaf]" : "border-[#e0e0e0]"} `}
                   ></div>
                   <span
-                    className={`text-xs font-medium px-2 py-2 transition-colors duration-300 ${isDarkMode ? "text-[#f5f5f5]" : "text-[#222222]"
-                      }`}
+                    className={`text-xs font-medium px-2 py-2 transition-colors duration-300 ${isDarkMode ? "text-[#f5f5f5]" : "text-[#222222]"} `}
                   >
                     Menu
                   </span>
                 </div>
               </header>
 
-              {/* Intro Card */}
+
+              {/* Hero */}
               <div className={`mb-3 rounded-lg p-6 md:p-10 transition-colors duration-300 ${isDarkMode ? 'bg-[#191B1C]' : 'bg-[#F6F6F6]'
                 }`}>
                 <div className="relative z-10 mb-10 flex items-center ">
@@ -124,7 +132,7 @@ const Home = () => {
                       <a href="/">Mark Zaragoza</a>
                     </h1>
                     <p className={`text-sm transition-colors duration-300 ${isDarkMode ? 'text-[#a5a5a5]' : 'text-[#6B6C6C]'
-                      }`}>Frontend Developer</p>
+                      }`}>Frontend Developer | Graphic Designer</p>
                   </div>
                 </div>
 
@@ -182,7 +190,7 @@ const Home = () => {
                 </Marquee>
               </div>
 
-              {/* Services Section */}
+              {/* Services */}
               <div className="space-y-3 mb-3">
                 <div className="flex justify-center">
                   <div className={`rounded-lg py-5 flex justify-center items-center w-full transition-colors duration-300 ${isDarkMode ? 'bg-[#191B1C]' : 'bg-[#f6f6f6]'
@@ -194,8 +202,6 @@ const Home = () => {
                     </span>
                   </div>
                 </div>
-
-                {/* Service Grid */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                   <div className={`rounded-lg p-5 text-left smooth-card transition-colors duration-300 ${isDarkMode ? 'bg-[#191B1C]' : 'bg-[#f6f6f6]'}`}>
                     <h3 className={`text-sm font-medium mb-2 ${isDarkMode ? 'text-[#f5f5f5]' : 'text-[#222222]'}`}>Web Development</h3>
@@ -227,7 +233,7 @@ const Home = () => {
                 </div>
               </div>
 
-              {/* Pricing Section */}
+              {/* Pricing */}
               <div className="space-y-3 mb-3">
                 <div className="flex justify-center">
                   <div className={`rounded-lg py-5 flex justify-center items-center w-full transition-colors duration-300 ${isDarkMode ? 'bg-[#191B1C]' : 'bg-[#f6f6f6]'}`}>
@@ -239,7 +245,7 @@ const Home = () => {
                 </div>
               </div>
 
-              {/* FAQ Section */}
+              {/* FAQ */}
               <div className="space-y-3">
                 <div className="flex justify-center">
                   <div className={`rounded-lg py-5 flex justify-center items-center w-full transition-colors duration-300 ${isDarkMode ? 'bg-[#191B1C]' : 'bg-[#f6f6f6]'}`}>
