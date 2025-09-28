@@ -11,6 +11,8 @@
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.13",
+    "animate.css": "^4.1.1",
+    "aos": "^2.3.4",
     "gsap": "^3.13.0",
     "lucide-react": "^0.544.0",
     "react": "^19.1.1",
