@@ -1,14 +1,27 @@
-
-import Home from './pages/Home'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { useState } from 'react';
+import Contact from './pages/Contact';
+import Home from './pages/Home';
 
 function App() {
-
+  const [isDarkMode, setIsDarkMode] = useState(false);
 
   return (
-    <>
-   <Home></Home>
-    </>
-  )
+    <Router>
+      <Routes>
+        <Route
+          path="/"
+          element={<Home isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />}
+        />
+        <Route
+          path="/contact"
+          element={<Contact isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />}
+        />
+
+
+      </Routes>
+    </Router>
+  );
 }
 
-export default App
+export default App;
