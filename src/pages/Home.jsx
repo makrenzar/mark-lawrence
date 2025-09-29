@@ -524,7 +524,6 @@ const Home = ({ isDarkMode, setIsDarkMode }) => {
           </div>
         </div>
       </div>
-
     </>
   );
 };
