@@ -1,4 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
+import { gsap } from 'gsap';
 
 const Contact = ({ isDarkMode, setIsDarkMode }) => {
     const [formData, setFormData] = useState({
@@ -10,15 +12,51 @@ const Contact = ({ isDarkMode, setIsDarkMode }) => {
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [submitStatus, setSubmitStatus] = useState("");
 
+    // Refs for animations
+    const contentRef = useRef(null);
+    const formFieldsRef = useRef([]);
+
     // Auto-hide status after 3 seconds
     useEffect(() => {
         if (submitStatus) {
             const timer = setTimeout(() => {
                 setSubmitStatus("");
             }, 3000);
-            return () => clearTimeout(timer); // cleanup
+            return () => clearTimeout(timer);
         }
     }, [submitStatus]);
+
+    // Animation on mount
+    useEffect(() => {
+        // Set initial states
+        gsap.set(contentRef.current, {
+            y: 30,
+            opacity: 0
+        });
+
+        gsap.set(formFieldsRef.current, {
+            y: 20,
+            opacity: 0
+        });
+
+        // Create timeline for animations
+        const tl = gsap.timeline();
+
+        tl.to(contentRef.current, {
+            y: 0,
+            opacity: 1,
+            duration: 0.8,
+            ease: "power2.out"
+        })
+        .to(formFieldsRef.current, {
+            y: 0,
+            opacity: 1,
+            duration: 0.5,
+            stagger: 0.1,
+            ease: "power2.out"
+        }, "-=0.3");
+
+    }, []);
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
@@ -34,7 +72,6 @@ const Contact = ({ isDarkMode, setIsDarkMode }) => {
         setSubmitStatus("");
 
         try {
-            // Using Formspree
             const response = await fetch('https://formspree.io/f/mrbypaln', {
                 method: 'POST',
                 headers: {
@@ -84,12 +121,21 @@ const Contact = ({ isDarkMode, setIsDarkMode }) => {
                                     ></div>
                                 </button>
 
-                                {/* Location - always visible */}
-                                <span
-                                    className={`font-medium text-xs transition-colors duration-300 ${isDarkMode ? "text-[#f5f5f5]" : "text-[#222222]"}`}
-                                >
-                                    Iloilo City, Philippines
-                                </span>
+                                {/* Location - with Home hover */}
+                                <Link to="/">
+                                    <div className="relative overflow-hidden group cursor-pointer">
+                                        <span
+                                            className={`font-medium text-xs block translate-y-0 transition-all duration-300 ease-in-out group-hover:-translate-y-[150%] ${isDarkMode ? "text-[#f5f5f5]" : "text-[#222222]"}`}
+                                        >
+                                            Iloilo City, Philippines
+                                        </span>
+                                        <span
+                                            className={`font-medium text-xs absolute top-0 left-0 translate-y-[150%] transition-all duration-300 ease-in-out group-hover:translate-y-0 ${isDarkMode ? "text-[#f5f5f5]" : "text-[#222222]"}`}
+                                        >
+                                            Home
+                                        </span>
+                                    </div>
+                                </Link>
 
                                 {/* Phone + Availability - hidden on mobile */}
                                 <div className="hidden md:flex items-center cursor-pointer relative overflow-hidden group">
@@ -117,8 +163,10 @@ const Contact = ({ isDarkMode, setIsDarkMode }) => {
                                 </span>
                             </div>
                         </header>
-                        <div className={`mb-3 rounded-lg p-6 md:p-10 transition-colors duration-300  ${isDarkMode ? 'bg-[#191B1C]' : 'bg-[#F6F6F6]'}`}>
+
+                        <div ref={contentRef} className={`mb-3 rounded-lg p-6 md:p-10 transition-colors duration-300  ${isDarkMode ? 'bg-[#191B1C]' : 'bg-[#F6F6F6]'}`}>
                             <div className="mb-8">
+                     
                                 <h1 className={`text-4xl md:text-5xl font-light mb-4 transition-colors duration-300 ${isDarkMode ? 'text-[#f5f5f5]' : 'text-[#222222]'}`}>
                                     Let's Talk
                                 </h1>
@@ -130,7 +178,7 @@ const Contact = ({ isDarkMode, setIsDarkMode }) => {
                             {/* Form */}
                             <form onSubmit={handleSubmit} className="space-y-3">
                                 {/* Name and Email Row */}
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                                <div ref={el => formFieldsRef.current[0] = el} className="grid grid-cols-1 md:grid-cols-2 gap-3">
                                     <input
                                         type="text"
                                         name="name"
@@ -138,7 +186,7 @@ const Contact = ({ isDarkMode, setIsDarkMode }) => {
                                         onChange={handleInputChange}
                                         placeholder="Your Name"
                                         required
-                                        className={`w-full px-6 py-3 rounded-lg text-sm transition-colors duration-300 focus:outline-none focus:ring-1 focus:ring-offset-1 placeholder-[#a5a5a5]   focus:ring-[#222222] ${isDarkMode ? 'text-[#f5f5f5] bg-[#0E1011] ' : 'text-[#222222] bg-white'}`}
+                                        className={`w-full px-6 py-3 rounded-lg text-sm transition-colors duration-300 focus:outline-none focus:ring-1 focus:ring-offset-1 placeholder-[#a5a5a5] focus:ring-[#222222] ${isDarkMode ? 'text-[#f5f5f5] bg-[#0E1011]' : 'text-[#222222] bg-white'}`}
                                     />
                                     <input
                                         type="email"
@@ -147,22 +195,24 @@ const Contact = ({ isDarkMode, setIsDarkMode }) => {
                                         onChange={handleInputChange}
                                         placeholder="Your Email"
                                         required
-                                        className={`w-full px-6 py-3 rounded-lg text-sm transition-colors duration-300 focus:outline-none focus:ring-1 focus:ring-offset-1  placeholder-[#a5a5a5] focus:ring-[#222222] ${isDarkMode ? 'text-[#f5f5f5] bg-[#0E1011]' : 'text-[#222222] bg-white'}`}
+                                        className={`w-full px-6 py-3 rounded-lg text-sm transition-colors duration-300 focus:outline-none focus:ring-1 focus:ring-offset-1 placeholder-[#a5a5a5] focus:ring-[#222222] ${isDarkMode ? 'text-[#f5f5f5] bg-[#0E1011]' : 'text-[#222222] bg-white'}`}
                                     />
                                 </div>
 
                                 {/* Subject Field (Optional) */}
                                 <input
+                                    ref={el => formFieldsRef.current[1] = el}
                                     type="text"
                                     name="subject"
                                     value={formData.subject}
                                     onChange={handleInputChange}
                                     placeholder="Subject (Optional)"
-                                    className={`w-full px-6 py-3 rounded-lg text-sm transition-colors duration-300 focus:outline-none focus:ring-1 focus:ring-offset-1  placeholder-[#a5a5a5] focus:ring-[#222222] ${isDarkMode ? 'text-[#f5f5f5] bg-[#0E1011]' : 'text-[#222222] bg-white'}`}
+                                    className={`w-full px-6 py-3 rounded-lg text-sm transition-colors duration-300 focus:outline-none focus:ring-1 focus:ring-offset-1 placeholder-[#a5a5a5] focus:ring-[#222222] ${isDarkMode ? 'text-[#f5f5f5] bg-[#0E1011]' : 'text-[#222222] bg-white'}`}
                                 />
 
                                 {/* Message Textarea */}
                                 <textarea
+                                    ref={el => formFieldsRef.current[2] = el}
                                     name="message"
                                     value={formData.message}
                                     onChange={handleInputChange}
@@ -175,18 +225,16 @@ const Contact = ({ isDarkMode, setIsDarkMode }) => {
                                 {/* Status Messages */}
                                 {submitStatus === "success" && (
                                     <div
-                                        className={`p-4 rounded-lg transition-colors duration-300 ${isDarkMode ? "bg-[#0E1011] text-[#f5f5f5]" : "bg-white text-[#222222]"
-                                            }`}
+                                        className={`p-4 rounded-lg transition-colors duration-300 ${isDarkMode ? "bg-[#0E1011] text-[#f5f5f5]" : "bg-white text-[#222222]"}`}
                                     >
                                         <p className="text-sm">
-                                            Your message has been sent successfully. I’ll get back to you shortly.
+                                            Your message has been sent successfully. I'll get back to you shortly.
                                         </p>
                                     </div>
                                 )}
                                 {submitStatus === "error" && (
                                     <div
-                                        className={`p-4 rounded-lg transition-colors duration-300 ${isDarkMode ? "bg-[#0E1011] text-[#f5f5f5]" : "bg-white text-[#222222]"
-                                            }`}
+                                        className={`p-4 rounded-lg transition-colors duration-300 ${isDarkMode ? "bg-[#0E1011] text-[#f5f5f5]" : "bg-white text-[#222222]"}`}
                                     >
                                         <p className="text-sm">
                                             Something went wrong. Please try again, or reach me directly at{" "}
@@ -195,9 +243,9 @@ const Contact = ({ isDarkMode, setIsDarkMode }) => {
                                     </div>
                                 )}
 
-
                                 {/* Submit Button */}
                                 <button
+                                    ref={el => formFieldsRef.current[3] = el}
                                     type="submit"
                                     disabled={isSubmitting}
                                     className={`group w-full cursor-pointer relative inline-flex h-12 items-center justify-center overflow-hidden rounded-lg font-medium text-sm transition-colors duration-300 ${isSubmitting ? 'opacity-50 cursor-not-allowed' : ''} ${isDarkMode ? 'bg-white text-[#222222]' : 'bg-[#0E1011] text-[#f5f5f5]'}`}

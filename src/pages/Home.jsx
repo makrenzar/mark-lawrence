@@ -20,8 +20,6 @@ const Home = ({ isDarkMode, setIsDarkMode }) => {
   // Refs for animations
   const heroRef = useRef(null);
   const marqueeRef = useRef(null);
-  const servicesHeaderRef = useRef(null);
-  const serviceCardsRef = useRef([]);
   const pricingHeaderRef = useRef(null);
   const pricingCardsRef = useRef([]);
   const faqHeaderRef = useRef(null);
@@ -49,12 +47,12 @@ const Home = ({ isDarkMode, setIsDarkMode }) => {
 
   useEffect(() => {
     // Set initial states
-    gsap.set([heroRef.current, marqueeRef.current, servicesHeaderRef.current, pricingHeaderRef.current, faqHeaderRef.current], {
+    gsap.set([heroRef.current, marqueeRef.current, pricingHeaderRef.current, faqHeaderRef.current], {
       y: 30,
       opacity: 0
     });
 
-    gsap.set([...serviceCardsRef.current, ...pricingCardsRef.current, ...faqItemsRef.current], {
+    gsap.set([...pricingCardsRef.current, ...faqItemsRef.current], {
       y: 20,
       opacity: 0
     });
@@ -73,28 +71,7 @@ const Home = ({ isDarkMode, setIsDarkMode }) => {
         opacity: 1,
         duration: 0.6,
         ease: "power2.out"
-      }, "-=0.4")
-      .to(servicesHeaderRef.current, {
-        y: 0,
-        opacity: 1,
-        duration: 0.6,
-        ease: "power2.out"
-      }, "-=0.3");
-
-    // Animate service cards with stagger
-    ScrollTrigger.create({
-      trigger: servicesHeaderRef.current,
-      start: "top 80%",
-      onEnter: () => {
-        gsap.to(serviceCardsRef.current, {
-          y: 0,
-          opacity: 1,
-          duration: 0.6,
-          stagger: 0.1,
-          ease: "power2.out"
-        });
-      }
-    });
+      }, "-=0.4");
 
     // Animate pricing section
     ScrollTrigger.create({
@@ -343,47 +320,6 @@ const Home = ({ isDarkMode, setIsDarkMode }) => {
                     </div>
                   ))}
                 </Marquee>
-              </div>
-
-              {/* Services */}
-              <div className="space-y-3 mb-3">
-                <div ref={servicesHeaderRef} className="flex justify-center">
-                  <div className={`rounded-lg py-5 flex justify-center items-center w-full transition-colors duration-300 ${isDarkMode ? 'bg-[#191B1C]' : 'bg-[#f6f6f6]'}`}>
-                    <span className={`text-sm font-[450] flex items-center gap-2 transition-colors duration-300 ${isDarkMode ? 'text-[#f5f5f5]' : 'text-[#222222]'}`}>
-                      Services
-                      <ion-icon name="arrow-down-outline" size="small"></ion-icon>
-                    </span>
-                  </div>
-                </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                  <div ref={el => serviceCardsRef.current[0] = el} className={`rounded-lg p-5 text-left smooth-card transition-colors duration-300 ${isDarkMode ? 'bg-[#191B1C]' : 'bg-[#f6f6f6]'}`}>
-                    <h3 className={`text-sm font-medium mb-2 ${isDarkMode ? 'text-[#f5f5f5]' : 'text-[#222222]'}`}>Web Development</h3>
-                    <p className={`text-[15px] leading-6 ${isDarkMode ? 'text-[#a5a5a5]' : 'text-[#6B6C6C]'}`}>
-                      I build modern, responsive websites that are easy to use and work on any device.
-                    </p>
-                  </div>
-
-                  <div ref={el => serviceCardsRef.current[1] = el} className={`rounded-lg p-5 text-left smooth-card ${isDarkMode ? 'bg-[#191B1C]' : 'bg-[#f6f6f6]'}`}>
-                    <h3 className={`text-sm font-medium mb-2 ${isDarkMode ? 'text-[#f5f5f5]' : 'text-[#222222]'}`}>UX/UI Design</h3>
-                    <p className={`text-[15px] leading-6 ${isDarkMode ? 'text-[#a5a5a5]' : 'text-[#6B6C6C]'}`}>
-                      I design clean and user-friendly interfaces so your visitors enjoy every click.
-                    </p>
-                  </div>
-
-                  <div ref={el => serviceCardsRef.current[2] = el} className={`rounded-lg p-5 text-left smooth-card ${isDarkMode ? 'bg-[#191B1C]' : 'bg-[#f6f6f6]'}`}>
-                    <h3 className={`text-sm font-medium mb-2 ${isDarkMode ? 'text-[#f5f5f5]' : 'text-[#222222]'}`}>Graphic Design</h3>
-                    <p className={`text-[15px] leading-6 ${isDarkMode ? 'text-[#a5a5a5]' : 'text-[#6B6C6C]'}`}>
-                      I create eye-catching visuals like logos, posters, and social media designs.
-                    </p>
-                  </div>
-
-                  <div ref={el => serviceCardsRef.current[3] = el} className={`rounded-lg p-5 text-left smooth-card ${isDarkMode ? 'bg-[#191B1C]' : 'bg-[#f6f6f6]'}`}>
-                    <h3 className={`text-sm font-medium mb-2 ${isDarkMode ? 'text-[#f5f5f5]' : 'text-[#222222]'}`}>Digital Marketing</h3>
-                    <p className={`text-[15px] leading-6 ${isDarkMode ? 'text-[#a5a5a5]' : 'text-[#6B6C6C]'}`}>
-                      I help promote your brand online through social media and creative campaigns.
-                    </p>
-                  </div>
-                </div>
               </div>
 
               {/* Packages */}
