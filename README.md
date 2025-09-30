@@ -1,4 +1,5 @@
 Mark Lawrenc Zaragoza
+Frontend Developer
 
 Installation & Setup
 
