@@ -1,5 +1,5 @@
 Mark Lawrenc Zaragoza
-Frontend Developer
+Frontend Developer | Graphic Designer
 
 Installation & Setup
 
