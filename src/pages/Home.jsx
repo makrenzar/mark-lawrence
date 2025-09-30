@@ -3,13 +3,13 @@ import { Link } from 'react-router-dom';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Marquee from "react-fast-marquee";
+import { Facebook, Instagram, Github, Pin, Mail, ArrowRight, ArrowDown, CheckIcon, Plus, Phone } from 'lucide-react';
 import mkrn from "../assets/makren.png";
 import img1 from "../assets/1.png";
 import img2 from "../assets/2.png";
 import img3 from "../assets/3.png";
 import img4 from "../assets/4.png";
 import img5 from "../assets/5.png";
-
 
 // Register ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger);
@@ -22,8 +22,12 @@ const Home = ({ isDarkMode, setIsDarkMode }) => {
   const marqueeRef = useRef(null);
   const pricingHeaderRef = useRef(null);
   const pricingCardsRef = useRef([]);
+  const experienceHeaderRef = useRef(null);
+  const experienceItemsRef = useRef([]);
   const faqHeaderRef = useRef(null);
   const faqItemsRef = useRef([]);
+  const socialHeaderRef = useRef(null);
+  const socialLinksRef = useRef([]);
 
   const works = [
     { imageSrc: img1 },
@@ -31,6 +35,40 @@ const Home = ({ isDarkMode, setIsDarkMode }) => {
     { imageSrc: img3 },
     { imageSrc: img4 },
     { imageSrc: img5 },
+  ];
+
+  // const experienceData = [
+  //   {
+  //     period: "2025 - Present",
+  //     role: "Graphic Designer | IT Support",
+  //     company: "BYD Iloilo",
+  //     description: "Designing marketing materials and providing technical support for dealership operations."
+  //   },
+  //   {
+  //     period: "2024 - 2025",
+  //     role: "Junior Full-Stack Developer",
+  //     company: "Blaqbox Technology Corporation",
+  //     description: "Developed internal ERP systems for inventory and billing management."
+  //   },
+  //   {
+  //     period: "2023 - Present",
+  //     role: "Freelance Web Developer",
+  //     company: "Self-Employed",
+  //     description: "Building custom websites for clients using React, TailwindCSS, and modern web technologies."
+  //   }
+  // ];
+
+  const socialLinks = [
+    {
+      name: 'Instagram',
+      icon: Instagram,
+      url: 'https://www.instagram.com/makrenzar/'
+    },
+    {
+      name: 'GitHub',
+      icon: Github,
+      url: 'https://github.com/makrenzar'
+    },
   ];
 
   const toggleDarkMode = () => {
@@ -47,12 +85,12 @@ const Home = ({ isDarkMode, setIsDarkMode }) => {
 
   useEffect(() => {
     // Set initial states
-    gsap.set([heroRef.current, marqueeRef.current, pricingHeaderRef.current, faqHeaderRef.current], {
+    gsap.set([heroRef.current, marqueeRef.current, pricingHeaderRef.current, experienceHeaderRef.current, faqHeaderRef.current, socialHeaderRef.current], {
       y: 30,
       opacity: 0
     });
 
-    gsap.set([...pricingCardsRef.current, ...faqItemsRef.current], {
+    gsap.set([...pricingCardsRef.current, ...experienceItemsRef.current, ...faqItemsRef.current, ...socialLinksRef.current], {
       y: 20,
       opacity: 0
     });
@@ -95,6 +133,28 @@ const Home = ({ isDarkMode, setIsDarkMode }) => {
       }
     });
 
+    // Animate Experience section
+    ScrollTrigger.create({
+      trigger: experienceHeaderRef.current,
+      start: "top 80%",
+      onEnter: () => {
+        gsap.to(experienceHeaderRef.current, {
+          y: 0,
+          opacity: 1,
+          duration: 0.6,
+          ease: "power2.out"
+        });
+        gsap.to(experienceItemsRef.current, {
+          y: 0,
+          opacity: 1,
+          duration: 0.5,
+          stagger: 0.1,
+          ease: "power2.out",
+          delay: 0.3
+        });
+      }
+    });
+
     // Animate FAQ section
     ScrollTrigger.create({
       trigger: faqHeaderRef.current,
@@ -107,6 +167,28 @@ const Home = ({ isDarkMode, setIsDarkMode }) => {
           ease: "power2.out"
         });
         gsap.to(faqItemsRef.current, {
+          y: 0,
+          opacity: 1,
+          duration: 0.5,
+          stagger: 0.1,
+          ease: "power2.out",
+          delay: 0.3
+        });
+      }
+    });
+
+    // Animate Social Links section
+    ScrollTrigger.create({
+      trigger: socialHeaderRef.current,
+      start: "top 80%",
+      onEnter: () => {
+        gsap.to(socialHeaderRef.current, {
+          y: 0,
+          opacity: 1,
+          duration: 0.6,
+          ease: "power2.out"
+        });
+        gsap.to(socialLinksRef.current, {
           y: 0,
           opacity: 1,
           duration: 0.5,
@@ -285,16 +367,16 @@ const Home = ({ isDarkMode, setIsDarkMode }) => {
                       }`}>
                       <div className="translate-y-0 transition-transform duration-300 ease-in-out group-hover:-translate-y-[150%] flex items-center gap-2">
                         Send Email
-                        <ion-icon name="mail-outline" size="small"></ion-icon>
+                        <Mail size={17} strokeWidth={1.5} />
                       </div>
                       <div className="absolute translate-y-[150%] transition-transform duration-300 ease-in-out group-hover:translate-y-0 flex items-center gap-2">
                         Send Email
-                        <ion-icon name="arrow-forward-outline" size="small"></ion-icon>
+                        <ArrowRight size={17} strokeWidth={1.5} />
                       </div>
                     </button>
                   </Link>
 
-                  <button className={`group cursor-pointer relative inline-flex h-7 md:h-9 items-center justify-center overflow-hidden rounded-md px-6 py-5 font-medium text-sm transition-colors duration-300 ${isDarkMode
+                  <button disabled className={`group cursor-not-allowed relative inline-flex h-7 md:h-9 items-center justify-center overflow-hidden rounded-md px-6 py-5 font-medium text-sm transition-colors duration-300 ${isDarkMode
                     ? 'bg-[#0E1011] text-[#f5f5f5]'
                     : 'bg-white text-[#222222]'
                     }`}>
@@ -315,6 +397,8 @@ const Home = ({ isDarkMode, setIsDarkMode }) => {
                       <img
                         src={work.imageSrc}
                         alt={`Portfolio ${index + 1}`}
+                        loading="lazy"
+                        decoding="async"
                         className="h-[137px] w-[200px] cursor-pointer object-cover rounded-lg "
                       />
                     </div>
@@ -322,13 +406,52 @@ const Home = ({ isDarkMode, setIsDarkMode }) => {
                 </Marquee>
               </div>
 
+
+              {/* Experience 
+              <div className="space-y-3 mb-3">
+                <div ref={experienceHeaderRef} className="flex justify-center">
+                  <div className={`rounded-lg py-5 flex justify-center items-center w-full transition-colors duration-300 ${isDarkMode ? 'bg-[#191B1C]' : 'bg-[#f6f6f6]'}`}>
+                    <span className={`text-sm font-[450] flex items-center gap-2 transition-colors duration-300 ${isDarkMode ? 'text-[#f5f5f5]' : 'text-[#222222]'}`}>
+                      Experience
+                      <ArrowDown size={17} strokeWidth={1.5} />
+                    </span>
+                  </div>
+                </div>
+                */}
+
+                {/* Experience Items 
+                <div className="grid grid-cols-1 gap-3">
+                  {experienceData.map((exp, index) => (
+                    <div
+                      key={index}
+                      ref={el => experienceItemsRef.current[index] = el}
+                      className={`rounded-lg p-6 transition-colors duration-300 ${isDarkMode ? 'bg-[#191B1C]' : 'bg-[#f6f6f6]'}`}
+                    >
+                      <div className={`text-xs italic mb-2 transition-colors duration-300 ${isDarkMode ? 'text-[#a5a5a5]' : 'text-[#222222]'}`}>
+                        {exp.period}
+                      </div>
+                      <h3 className={`text-sm font-medium mb-1 transition-colors duration-300 ${isDarkMode ? 'text-[#f5f5f5]' : 'text-[#222222]'}`}>
+                        {exp.role}
+                      </h3>
+                      <div className={`text-sm mb-3 transition-colors duration-300 ${isDarkMode ? 'text-[#a5a5a5]' : 'text-[#666]'}`}>
+                        {exp.company}
+                      </div>
+                      <p className={`text-[15px] leading-6 transition-colors duration-300 ${isDarkMode ? 'text-[#a5a5a5]' : 'text-[#6B6C6C]'}`}>
+                        {exp.description}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              */}
+
               {/* Packages */}
               <div className="space-y-3 mb-3">
                 <div ref={pricingHeaderRef} className="flex justify-center">
                   <div className={`rounded-lg py-5 flex justify-center items-center w-full transition-colors duration-300 ${isDarkMode ? 'bg-[#191B1C]' : 'bg-[#f6f6f6]'}`}>
                     <span className={`text-sm font-[450] flex items-center gap-2 transition-colors duration-300 ${isDarkMode ? 'text-[#f5f5f5]' : 'text-[#222222]'}`}>
                       How I Work
-                      <ion-icon name="arrow-down-outline" size="small"></ion-icon>
+                      <ArrowDown size={17} strokeWidth={1.5} />
                     </span>
                   </div>
                 </div>
@@ -362,7 +485,7 @@ const Home = ({ isDarkMode, setIsDarkMode }) => {
                         {pkg.features.map((feature, featureIndex) => (
                           <div key={featureIndex} className="flex items-start mb-3">
                             <div className="w-4 h-4 rounded-sm mr-3 flex items-center justify-center mt-0.5 transition-colors duration-300 bg-white">
-                              <ion-icon name="checkmark-outline" style={{ color: '#222222', fontSize: '12px' }}></ion-icon>
+                              <CheckIcon size={15} strokeWidth={2} color="#222222" />
                             </div>
                             <span className={`text-[15px] leading-6 transition-colors duration-300 ${isDarkMode ? 'text-[#a5a5a5]' : 'text-[#222222]'}`}>
                               {feature}
@@ -379,49 +502,29 @@ const Home = ({ isDarkMode, setIsDarkMode }) => {
                           }`}>
                           <div className="translate-y-0 transition-transform duration-300 ease-in-out group-hover:-translate-y-[150%] flex items-center gap-2">
                             {pkg.cta}
-                            <ion-icon name="arrow-forward-outline" size="small"></ion-icon>
+                            <ArrowRight size={17} strokeWidth={1.5} />
                           </div>
                           <div className="absolute translate-y-[150%] transition-transform duration-300 ease-in-out group-hover:translate-y-0 flex items-center gap-2">
                             {pkg.cta}
-                            <ion-icon name="arrow-forward-outline" size="small"></ion-icon>
+                            <ArrowRight size={17} strokeWidth={1.5} />
                           </div>
                         </button>
                       </Link>
                     </div>
                   ))}
 
-                  {/* Custom Projects Card */}
-                  <div
-                    ref={el => pricingCardsRef.current[2] = el}
-                    className={`rounded-lg p-6 text-center transition-colors duration-300 ${isDarkMode ? 'bg-[#191B1C]' : 'bg-[#f6f6f6]'}`}
-                  >
-                    <h3 className={`text-base font-medium mb-2 transition-colors duration-300 ${isDarkMode ? 'text-[#f5f5f5]' : 'text-[#222222]'}`}>
-                      Need Something Custom?
-                    </h3>
-                    <p className={`text-[15px] leading-6 mb-4 transition-colors duration-300 ${isDarkMode ? 'text-[#a5a5a5]' : 'text-[#6B6C6C]'}`}>
-                      Have a unique project in mind? Let's discuss your vision and create something amazing together.
-                    </p>
-                    <Link to="/contact" state={{ package: "Custom Project" }}>
-                      <button className={`group cursor-pointer relative inline-flex h-9 items-center justify-center overflow-hidden rounded-md px-6 font-medium text-sm transition-colors duration-300 bg-white text-[#222222]`}>
-                        <div className="translate-y-0 transition-transform duration-300 ease-in-out group-hover:-translate-y-[150%]">
-                          Let's Talk
-                        </div>
-                        <div className="absolute translate-y-[150%] transition-transform duration-300 ease-in-out group-hover:translate-y-0">
-                          Let's Talk
-                        </div>
-                      </button>
-                    </Link>
-                  </div>
+
                 </div>
               </div>
 
+
               {/* FAQ */}
-              <div className="space-y-3">
+              <div className="space-y-3 mb-3">
                 <div ref={faqHeaderRef} className="flex justify-center">
                   <div className={`rounded-lg py-5 flex justify-center items-center w-full transition-colors duration-300 ${isDarkMode ? 'bg-[#191B1C]' : 'bg-[#f6f6f6]'}`}>
                     <span className={`text-sm font-[450] flex items-center gap-2 transition-colors duration-300 ${isDarkMode ? 'text-[#f5f5f5]' : 'text-[#222222]'}`}>
                       FAQ
-                      <ion-icon name="arrow-down-outline" size="small"></ion-icon>
+                      <ArrowDown size={17} strokeWidth={1.5} />
                     </span>
                   </div>
                 </div>
@@ -441,8 +544,8 @@ const Home = ({ isDarkMode, setIsDarkMode }) => {
                         <span className={`text-sm font-medium transition-colors duration-300 ${isDarkMode ? 'text-[#f5f5f5]' : 'text-[#222222]'}`}>
                           {faq.question}
                         </span>
-                        <div className={`transform transition-all duration-300 ${expandedFAQs.includes(index) ? 'rotate-45' : 'rotate-0'} ${isDarkMode ? 'text-[#f5f5f5] bg-[#2a2d2e]' : 'text-[#222222] bg-[#ffffff]'} rounded-sm w-5 h-5 flex items-center justify-center`}>
-                          <ion-icon name="add-outline" ></ion-icon>
+                        <div className={`transform transition-all duration-300 ${expandedFAQs.includes(index) ? 'rotate-45' : 'rotate-0'} ${isDarkMode ? 'text-[#f5f5f5] ' : 'text-[#222222] '} rounded-sm w-5 h-5 flex items-center justify-center`}>
+                          <Plus size={17} strokeWidth={1.5} />
                         </div>
                       </button>
                       <div className={`overflow-hidden transition-all duration-500 ease-in-out ${expandedFAQs.includes(index) ? 'max-h-96 ' : 'max-h-0 '}`}>
@@ -455,6 +558,67 @@ const Home = ({ isDarkMode, setIsDarkMode }) => {
                     </div>
                   ))}
                 </div>
+              </div>
+
+              {/* Social Links */}
+              <div className="space-y-3">
+                <div className="grid grid-cols-2 gap-3">
+                  {socialLinks.map((social, index) => {
+                    const IconComponent = social.icon;
+
+                    return (
+                      <a
+                        key={index}
+                        ref={el => socialLinksRef.current[index] = el}
+                        href={social.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={`group rounded-lg px-5 py-4 flex items-center justify-between transition-all duration-300 cursor-pointer overflow-hidden relative ${isDarkMode ? 'bg-[#191B1C] hover:bg-[#222222]' : 'bg-[#f6f6f6] hover:bg-[#ececec]'}`}
+                      >
+                        <div className="relative overflow-hidden">
+                          <span className={`text-sm block translate-y-0 transition-transform duration-300 ease-in-out group-hover:-translate-y-[150%] ${isDarkMode ? 'text-[#f5f5f5]' : 'text-[#222222]'}`}>
+                            {social.name}
+                          </span>
+                          <span className={`text-sm absolute top-0 left-0 translate-y-[150%] transition-transform duration-300 ease-in-out group-hover:translate-y-0 ${isDarkMode ? 'text-[#f5f5f5]' : 'text-[#222222]'}`}>
+                            {social.name}
+                          </span>
+                        </div>
+                        <div className={`relative overflow-hidden flex items-center justify-center ${isDarkMode ? 'text-[#f5f5f5]' : 'text-[#222222]'}`}>
+                          <div className="translate-y-0 transition-transform duration-300 ease-in-out group-hover:-translate-y-[150%]">
+                            <IconComponent size={17} strokeWidth={1.5} />
+                          </div>
+                          <div className="absolute translate-y-[150%] transition-transform duration-300 ease-in-out group-hover:translate-y-0">
+                            <IconComponent size={17} strokeWidth={1.5} />
+                          </div>
+                        </div>
+                      </a>
+                    );
+                  })}
+                </div>
+
+
+                <Link
+                  to="/contact"
+                  ref={el => socialLinksRef.current[2] = el}
+                  className={`group rounded-lg px-5 py-4 flex items-center justify-between transition-all duration-300 cursor-pointer overflow-hidden relative ${isDarkMode ? 'bg-[#f5f5f5]  text-[#0E1011]' : 'bg-[#0E1011] text-[#f5f5f5]'}`}
+                >
+                  <div className="relative overflow-hidden">
+                    <span className="text-sm font-medium block translate-y-0 transition-transform duration-300 ease-in-out group-hover:-translate-y-[150%]">
+                      Book a Call
+                    </span>
+                    <span className="text-sm font-medium absolute top-0 left-0 translate-y-[150%] transition-transform duration-300 ease-in-out group-hover:translate-y-0">
+                      Book a Call
+                    </span>
+                  </div>
+                  <div className="relative overflow-hidden flex items-center justify-center">
+                    <div className="translate-y-0 transition-transform duration-300 ease-in-out group-hover:-translate-y-[150%]">
+                      <Phone size={17} strokeWidth={1.5} />
+                    </div>
+                    <div className="absolute translate-y-[150%] transition-transform duration-300 ease-in-out group-hover:translate-y-0">
+                      <Phone size={17} strokeWidth={1.5} />
+                    </div>
+                  </div>
+                </Link>
               </div>
             </div>
           </div>

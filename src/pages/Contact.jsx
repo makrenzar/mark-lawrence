@@ -127,12 +127,12 @@ const Contact = ({ isDarkMode, setIsDarkMode }) => {
                                         <span
                                             className={`font-medium text-xs block translate-y-0 transition-all duration-300 ease-in-out group-hover:-translate-y-[150%] ${isDarkMode ? "text-[#f5f5f5]" : "text-[#222222]"}`}
                                         >
-                                            Contact
+                                            Click me
                                         </span>
                                         <span
                                             className={`font-medium text-xs absolute top-0 left-0 translate-y-[150%] transition-all duration-300 ease-in-out group-hover:translate-y-0 ${isDarkMode ? "text-[#f5f5f5]" : "text-[#222222]"}`}
                                         >
-                                            Home
+                                            Go back
                                         </span>
                                     </div>
                                 </Link>
