@@ -209,18 +209,18 @@ const Home = ({ isDarkMode, setIsDarkMode }) => {
                   <span
                     className={`font-medium text-xs transition-colors duration-300 ${isDarkMode ? "text-[#f5f5f5]" : "text-[#222222]"}`}
                   >
-                    Iloilo City, Philippines
+                    Home
                   </span>
 
                   {/* Phone + Availability - hidden on mobile */}
-                  <div className="hidden md:flex items-center cursor-pointer relative overflow-hidden group">
+                  <div className="hidden md:flex items-center cursor-pointer relative group">
                     <div className="w-4 h-2 bg-[#2cdc3e] rounded-full ml-2 transition-all duration-300 group-hover:w-2"></div>
-                    <div className="ml-1 relative">
-                      <span className="text-xs text-[#2cdc3e] block translate-y-0 transition-transform duration-300 ease-in-out group-hover:-translate-y-[150%]">
+                    <div className="ml-1 relative w-30 overflow-hidden">
+                      <span className="text-xs text-[#2cdc3e] whitespace-nowrap block translate-y-0 transition-transform duration-300 ease-in-out group-hover:-translate-y-[150%]">
                         +63 976 301 3967
                       </span>
-                      <span className="text-xs text-[#2cdc3e] absolute top-0 left-0 translate-y-[150%] transition-transform duration-300 ease-in-out group-hover:translate-y-0">
-                        Available
+                      <span className="text-xs text-[#2cdc3e] whitespace-nowrap absolute top-0 left-0 translate-y-[150%] transition-transform duration-300 ease-in-out group-hover:translate-y-0">
+                        Iloilo City, Philippines
                       </span>
                     </div>
                   </div>

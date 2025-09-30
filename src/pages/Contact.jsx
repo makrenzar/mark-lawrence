@@ -48,13 +48,13 @@ const Contact = ({ isDarkMode, setIsDarkMode }) => {
             duration: 0.8,
             ease: "power2.out"
         })
-        .to(formFieldsRef.current, {
-            y: 0,
-            opacity: 1,
-            duration: 0.5,
-            stagger: 0.1,
-            ease: "power2.out"
-        }, "-=0.3");
+            .to(formFieldsRef.current, {
+                y: 0,
+                opacity: 1,
+                duration: 0.5,
+                stagger: 0.1,
+                ease: "power2.out"
+            }, "-=0.3");
 
     }, []);
 
@@ -127,7 +127,7 @@ const Contact = ({ isDarkMode, setIsDarkMode }) => {
                                         <span
                                             className={`font-medium text-xs block translate-y-0 transition-all duration-300 ease-in-out group-hover:-translate-y-[150%] ${isDarkMode ? "text-[#f5f5f5]" : "text-[#222222]"}`}
                                         >
-                                            Iloilo City, Philippines
+                                            Contact
                                         </span>
                                         <span
                                             className={`font-medium text-xs absolute top-0 left-0 translate-y-[150%] transition-all duration-300 ease-in-out group-hover:translate-y-0 ${isDarkMode ? "text-[#f5f5f5]" : "text-[#222222]"}`}
@@ -138,14 +138,14 @@ const Contact = ({ isDarkMode, setIsDarkMode }) => {
                                 </Link>
 
                                 {/* Phone + Availability - hidden on mobile */}
-                                <div className="hidden md:flex items-center cursor-pointer relative overflow-hidden group">
+                                <div className="hidden md:flex items-center cursor-pointer relative group">
                                     <div className="w-4 h-2 bg-[#2cdc3e] rounded-full ml-2 transition-all duration-300 group-hover:w-2"></div>
-                                    <div className="ml-1 relative">
-                                        <span className="text-xs text-[#2cdc3e] block translate-y-0 transition-transform duration-300 ease-in-out group-hover:-translate-y-[150%]">
+                                    <div className="ml-1 relative w-30  overflow-hidden">
+                                        <span className="text-[11.7px] text-[#2cdc3e] whitespace-nowrap block translate-y-0 transition-transform duration-300 ease-in-out group-hover:-translate-y-[150%]">
                                             +63 976 301 3967
                                         </span>
-                                        <span className="text-xs text-[#2cdc3e] absolute top-0 left-0 translate-y-[150%] transition-transform duration-300 ease-in-out group-hover:translate-y-0">
-                                            Available
+                                        <span className="text-xs text-[#2cdc3e] whitespace-nowrap absolute top-0 left-0 translate-y-[150%] transition-transform duration-300 ease-in-out group-hover:translate-y-0">
+                                            Iloilo City, Philippines
                                         </span>
                                     </div>
                                 </div>
@@ -154,7 +154,7 @@ const Contact = ({ isDarkMode, setIsDarkMode }) => {
                             {/* Right side */}
                             <div className="flex items-center space-x-2 flex-grow mx-2">
                                 <div
-                                    className={`flex-grow border-t transition-colors duration-300 ${isDarkMode ? "border-[#afafaf]" : "border-[#e0e0e0]"}`}
+                                    className={`flex-grow border-t transition-colors duration-300 ${isDarkMode ? "border-[#afafaf]" : "border-[#222222]"}`}
                                 ></div>
                                 <span
                                     className={`text-xs font-medium px-2 py-2 transition-colors duration-300 ${isDarkMode ? "text-[#f5f5f5]" : "text-[#222222]"}`}
@@ -166,7 +166,7 @@ const Contact = ({ isDarkMode, setIsDarkMode }) => {
 
                         <div ref={contentRef} className={`mb-3 rounded-lg p-6 md:p-10 transition-colors duration-300  ${isDarkMode ? 'bg-[#191B1C]' : 'bg-[#F6F6F6]'}`}>
                             <div className="mb-8">
-                     
+
                                 <h1 className={`text-4xl md:text-5xl font-light mb-4 transition-colors duration-300 ${isDarkMode ? 'text-[#f5f5f5]' : 'text-[#222222]'}`}>
                                     Let's Talk
                                 </h1>
