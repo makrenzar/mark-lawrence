@@ -1,6 +1,3 @@
-Mark Lawrenc Zaragoza
-Frontend Developer | Graphic Designer
-
 Installation & Setup
 
 Clone the repository and install dependencies:
