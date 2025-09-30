@@ -1,5 +1,4 @@
-Mark Lawrenc Zaragoza
-Frontend Developer | Graphic Designer
+Mark Lawrence
 
 Installation & Setup
 
