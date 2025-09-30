@@ -1,3 +1,5 @@
+Mark Lawrence
+
 Installation & Setup
 
 Clone the repository and install dependencies:
