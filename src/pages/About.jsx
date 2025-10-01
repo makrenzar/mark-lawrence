@@ -1,24 +1,30 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { gsap } from 'gsap';
-import { Plus, ArrowUpRight, ArrowRight, ArrowDown } from 'lucide-react';
+import { Instagram, Github, ArrowRight, ArrowUpRight, ArrowDown, Plus, Phone } from 'lucide-react';
 import mkrn from "../assets/makren.png";
 
 const About = ({ isDarkMode, setIsDarkMode }) => {
 
-  const [expandedAwards, setExpandedAwards] = useState([]);
+  const [expandedExperience, setExpandedExperience] = useState([]);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   // Refs for animations
   const contentRef = useRef(null);
-  const awardsHeaderRef = useRef(null);
-  const awardsItemsRef = useRef([]);
+  const experienceHeaderRef = useRef(null);
+  const experienceItemsRef = useRef([]);
   const menuCardsRef = useRef([]);
   const overlayRef = useRef(null);
+  const socialLinksRef = useRef([]);
 
-  const awardsData = [
+  const socialLinks = [
+    { name: "Instagram", url: "https://www.instagram.com/makrenzar/", icon: Instagram },
+    { name: "GitHub", url: "https://github.com/makrenzar", icon: Github },
+  ];
+
+  const experienceData = [
     { title: "Digital Designer", year: "Present", description: "Designing marketing materials and providing technical support for dealership operations. Designed marketing materials including brochures, banners, social media posts, and promotional ads for BYD vehicle campaigns. Collaborated with the sales and marketing team to create visual content aligned with brand guidelines and local promotions. Edited and retouched photos for product showcases, and events. Provided general IT support including troubleshooting hardware and software issues, fixing printer and network problems, and maintaining office computer systems. Tools used: Canva, Photoshop, Figma." },
-    { title: "Full-Stack Developer", year: "2024", description: " Developed internal ERP systems for inventory and billing management. Worked with the development and testing teams to build scalable, high-performance solutions that met client needs. Technologies used: HTML, CSS, Bootstrap, Javascript, PHP, SQL" }
+    { title: "Full-Stack Developer", year: "2024", description: "Developed internal ERP systems for inventory and billing management. Worked with the development and testing teams to build scalable, high-performance solutions that met client needs. Technologies used: HTML, CSS, Bootstrap, Javascript, PHP, SQL" }
   ];
 
   const menuItems = [
@@ -31,8 +37,8 @@ const About = ({ isDarkMode, setIsDarkMode }) => {
     setIsDarkMode(!isDarkMode);
   };
 
-  const toggleAward = (index) => {
-    setExpandedAwards(prev =>
+  const toggleExperience = (index) => {
+    setExpandedExperience(prev =>
       prev.includes(index)
         ? prev.filter(i => i !== index)
         : [...prev, index]
@@ -108,7 +114,7 @@ const About = ({ isDarkMode, setIsDarkMode }) => {
                 </div>
               </header>
 
-              {/* Hero Section - Applied from Home */}
+              {/* Hero Section */}
               <div ref={contentRef} className={`mb-3 rounded-lg p-6 md:p-10 transition-colors duration-300 ${isDarkMode ? 'bg-[#191B1C]' : 'bg-[#F6F6F6]'}`}>
                 <div className="relative z-10 mb-10 flex items-center">
                   <div className="relative z-10">
@@ -135,18 +141,15 @@ const About = ({ isDarkMode, setIsDarkMode }) => {
                   <h1 className={`text-3xl md:text-3xl font-light mb-4 transition-colors duration-300 ${isDarkMode ? 'text-[#f5f5f5]' : 'text-[#222222]'}`}>
                     About Me
                   </h1>
-                  <p className={`text-base leading-7 mb-4 transition-colors duration-300 ${isDarkMode ? 'text-[#a5a5a5]' : 'text-[#6B6C6C]'}`}>
-                    I'm a frontend developer and graphic designer passionate about creating digital experiences that are both beautiful and functional. My journey in tech combines technical expertise with creative design thinking.
-                  </p>
                   <p className={`text-base leading-7 transition-colors duration-300 ${isDarkMode ? 'text-[#a5a5a5]' : 'text-[#6B6C6C]'}`}>
-                    Currently based in Iloilo City, Philippines, I work on projects that range from marketing materials to full-stack web applications, always focusing on delivering quality results that exceed expectations.
+                    Passionate about creating innovative and user-friendly websites as a frontend developer, and crafting visually compelling designs as a graphics designer.
                   </p>
                 </div>
               </div>
 
-              {/* Awards Section */}
+              {/* Experience Section */}
               <div className="space-y-3 mb-3">
-                <div ref={awardsHeaderRef} className="flex justify-center">
+                <div ref={experienceHeaderRef} className="flex justify-center">
                   <div className={`rounded-lg py-5 flex justify-center items-center w-full transition-colors duration-300 ${isDarkMode ? 'bg-[#191B1C]' : 'bg-[#f6f6f6]'}`}>
                     <span className={`text-sm font-[450] flex items-center gap-2 transition-colors duration-300 ${isDarkMode ? 'text-[#f5f5f5]' : 'text-[#222222]'}`}>
                       Experience
@@ -156,38 +159,38 @@ const About = ({ isDarkMode, setIsDarkMode }) => {
                 </div>
 
                 <div className="grid grid-cols-1 gap-3">
-                  {awardsData.map((award, index) => (
+                  {experienceData.map((exp, index) => (
                     <div
                       key={index}
-                      ref={el => awardsItemsRef.current[index] = el}
+                      ref={el => experienceItemsRef.current[index] = el}
                       className={`rounded-lg transition-all duration-300 ${isDarkMode ? 'bg-[#191B1C] hover:bg-[#222222]' : 'bg-[#f6f6f6] hover:bg-[#ececec]'}`}
                     >
                       <button
-                        onClick={() => toggleAward(index)}
+                        onClick={() => toggleExperience(index)}
                         className="w-full p-5 text-left flex justify-between items-center cursor-pointer transition-all duration-300 rounded-lg group"
                       >
                         <div className="relative overflow-hidden flex-grow">
                           <span className={`text-sm font-medium block translate-y-0 transition-transform duration-300 ease-in-out group-hover:-translate-y-[150%] ${isDarkMode ? 'text-[#f5f5f5]' : 'text-[#222222]'}`}>
-                            {award.title}
+                            {exp.title}
                           </span>
                           <span className={`text-sm font-medium absolute top-0 left-0 translate-y-[150%] transition-transform duration-300 ease-in-out group-hover:translate-y-0 ${isDarkMode ? 'text-[#f5f5f5]' : 'text-[#222222]'}`}>
-                            {award.title}
+                            {exp.title}
                           </span>
                         </div>
                         <div className="flex items-center gap-4">
                           <span className={`text-sm transition-colors duration-300 ${isDarkMode ? 'text-[#a5a5a5]' : 'text-[#666]'}`}>
-                            {award.year}
+                            {exp.year}
                           </span>
-                          <div className={`transform transition-all duration-300 ${expandedAwards.includes(index) ? 'rotate-45' : 'rotate-0'} ${isDarkMode ? 'text-[#f5f5f5]' : 'text-[#222222]'} rounded-sm w-5 h-5 flex items-center justify-center`}>
+                          <div className={`transform transition-all duration-300 ${expandedExperience.includes(index) ? 'rotate-45' : 'rotate-0'} ${isDarkMode ? 'text-[#f5f5f5]' : 'text-[#222222]'} rounded-sm w-5 h-5 flex items-center justify-center`}>
                             <Plus size={17} strokeWidth={1.5} />
                           </div>
                         </div>
                       </button>
 
-                      <div className={`overflow-hidden transition-all duration-300 ease-in-out ${expandedAwards.includes(index) ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}`}>
+                      <div className={`overflow-hidden transition-all duration-300 ease-in-out ${expandedExperience.includes(index) ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}`}>
                         <div className="px-5 pb-5">
                           <p className={`text-[15px] leading-6 transition-colors duration-300 ${isDarkMode ? 'text-[#a5a5a5]' : 'text-[#6B6C6C]'}`}>
-                            {award.description}
+                            {exp.description}
                           </p>
                         </div>
                       </div>
@@ -196,9 +199,48 @@ const About = ({ isDarkMode, setIsDarkMode }) => {
                 </div>
               </div>
 
-              {/* Footer Section - Applied from Home */}
+              {/* Social + Call */}
+              <div className="space-y-3 mb-3">
+                <div className="grid grid-cols-2 gap-3">
+                  {socialLinks.map((social, index) => {
+                    const IconComponent = social.icon;
+                    return (
+                      <a key={index} ref={el => socialLinksRef.current[index] = el} href={social.url} target="_blank" rel="noopener noreferrer" className={`group rounded-lg px-5 py-4 flex items-center justify-between transition-all duration-300 cursor-pointer overflow-hidden relative ${isDarkMode ? 'bg-[#191B1C] hover:bg-[#222222]' : 'bg-[#f6f6f6] hover:bg-[#ececec]'}`}>
+                        <div className="relative overflow-hidden">
+                          <span className={`text-sm block translate-y-0 transition-transform duration-300 ease-in-out group-hover:-translate-y-[150%] ${isDarkMode ? 'text-[#f5f5f5]' : 'text-[#222222]'}`}>{social.name}</span>
+                          <span className={`text-sm absolute top-0 left-0 translate-y-[150%] transition-transform duration-300 ease-in-out group-hover:translate-y-0 ${isDarkMode ? 'text-[#f5f5f5]' : 'text-[#222222]'}`}>{social.name}</span>
+                        </div>
+                        <div className={`relative overflow-hidden flex items-center justify-center ${isDarkMode ? 'text-[#f5f5f5]' : 'text-[#222222]'}`}>
+                          <div className="translate-y-0 transition-transform duration-300 ease-in-out group-hover:-translate-y-[150%]">
+                            <IconComponent size={17} strokeWidth={1.5} />
+                          </div>
+                          <div className="absolute translate-y-[150%] transition-transform duration-300 ease-in-out group-hover:translate-y-0">
+                            <IconComponent size={17} strokeWidth={1.5} />
+                          </div>
+                        </div>
+                      </a>
+                    );
+                  })}
+                </div>
+
+                <Link to="/contact" ref={el => socialLinksRef.current[2] = el} className={`group rounded-lg px-5 py-4 flex items-center justify-between transition-all duration-300 cursor-pointer overflow-hidden relative ${isDarkMode ? 'bg-[#f5f5f5] text-[#0E1011]' : 'bg-[#0E1011] text-[#f5f5f5]'}`}>
+                  <div className="relative overflow-hidden">
+                    <span className="text-sm font-medium block translate-y-0 transition-transform duration-300 ease-in-out group-hover:-translate-y-[150%]">Book a Call</span>
+                    <span className="text-sm font-medium absolute top-0 left-0 translate-y-[150%] transition-transform duration-300 ease-in-out group-hover:translate-y-0">Book a Call</span>
+                  </div>
+                  <div className="relative overflow-hidden flex items-center justify-center">
+                    <div className="translate-y-0 transition-transform duration-300 ease-in-out group-hover:-translate-y-[150%]">
+                      <Phone size={17} strokeWidth={1.5} />
+                    </div>
+                    <div className="absolute translate-y-[150%] transition-transform duration-300 ease-in-out group-hover:translate-y-0">
+                      <Phone size={17} strokeWidth={1.5} />
+                    </div>
+                  </div>
+                </Link>
+              </div>
+
+              {/* Footer Section */}
               <div className={`rounded-lg p-6 md:p-8 transition-colors duration-300 ${isDarkMode ? 'bg-[#191B1C]' : 'bg-[#F6F6F6]'}`}>
-                {/* Profile Section */}
                 <div className="relative z-10 mb-10 flex items-center">
                   <div className="relative z-10">
                     <Link to="/">
@@ -221,7 +263,7 @@ const About = ({ isDarkMode, setIsDarkMode }) => {
                 </div>
 
                 {/* Three Column Links */}
-                <div className="grid grid-cols-3 gap-8">
+                <div className="grid grid-cols-3 gap-8 mb-3">
                   {/* Pages Column */}
                   <div>
                     <h4 className={`text-sm font-medium mb-4 transition-colors duration-300 ${isDarkMode ? 'text-[#f5f5f5]' : 'text-[#222222]'}`}>
@@ -243,15 +285,14 @@ const About = ({ isDarkMode, setIsDarkMode }) => {
                   {/* Work Column */}
                   <div>
                     <h4 className={`text-sm font-medium mb-4 transition-colors duration-300 ${isDarkMode ? 'text-[#f5f5f5]' : 'text-[#222222]'}`}>
-                      Work
+                      CMS
                     </h4>
                     <div className="space-y-3">
-                      <button disabled className={`block text-sm transition-colors duration-300 cursor-not-allowed ${isDarkMode ? 'text-[#a5a5a5]' : 'text-[#6B6C6C]'}`}>
+                      <Link to="/project">
+                      <button  className={`block text-sm transition-colors duration-300 cursor-pointer ${isDarkMode ? 'text-[#a5a5a5]' : 'text-[#6B6C6C]'}`}>
                         Projects
                       </button>
-                      <button disabled className={`block text-sm transition-colors duration-300 cursor-not-allowed ${isDarkMode ? 'text-[#a5a5a5]' : 'text-[#6B6C6C]'}`}>
-                        Case Studies
-                      </button>
+                      </Link>
                     </div>
                   </div>
 
@@ -282,9 +323,9 @@ const About = ({ isDarkMode, setIsDarkMode }) => {
                 </div>
 
                 {/* Copyright */}
-                <div className={`mt-8 pt-6 border-t transition-colors duration-300 ${isDarkMode ? 'border-[#2a2a2a]' : 'border-[#e0e0e0]'}`}>
-                  <p className={`text-xs transition-colors duration-300 ${isDarkMode ? 'text-[#a5a5a5]' : 'text-[#6B6C6C]'}`}>
-                    © 2025 Mark Zaragoza. All rights reserved.
+                <div className={` pt-2 border-t transition-colors duration-300 text-center ${isDarkMode ? 'border-[#2a2a2a]' : 'border-[#e0e0e0]'}`}>
+                  <p className={`text-xs  transition-colors duration-300 ${isDarkMode ? 'text-[#b0b0b0]' : 'text-[#555555]'}`}>
+                    © 2025 — Crafted by yours truly 😊
                   </p>
                 </div>
               </div>

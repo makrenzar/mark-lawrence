@@ -3,6 +3,7 @@ import { useState } from 'react';
 import Contact from './pages/Contact';
 import Home from './pages/Home';
 import About from './pages/About';
+import NotFound from './pages/NotFound'; // <-- import your 404 page
 
 function App() {
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -18,9 +19,15 @@ function App() {
           path="/contact"
           element={<Contact isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />}
         />
-            <Route
+        <Route
           path="/about"
           element={<About isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />}
+        />
+
+        {/* 404 fallback route */}
+        <Route
+          path="*"
+          element={<NotFound isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />}
         />
       </Routes>
     </Router>

@@ -267,10 +267,11 @@ const Home = ({ isDarkMode, setIsDarkMode }) => {
                     </button>
                   </Link>
 
-                  <button disabled className={`group cursor-not-allowed relative inline-flex h-7 md:h-9 items-center justify-center overflow-hidden rounded-md px-6 py-5 font-medium text-sm transition-colors duration-300 ${isDarkMode ? 'bg-[#0E1011] text-[#f5f5f5]' : 'bg-white text-[#222222]'}`}>
-                    <div className="translate-y-0 transition-transform duration-300 ease-in-out group-hover:-translate-y-[150%]">View Project</div>
-                    <div className="absolute translate-y-[150%] transition-transform duration-300 ease-in-out group-hover:translate-y-0">View Project</div>
-                  </button>
+                  <Link to="/project">
+                    <button className={`group cursor-pointer relative inline-flex h-7 md:h-9 items-center justify-center overflow-hidden rounded-md px-6 py-5 font-medium text-sm transition-colors duration-300 ${isDarkMode ? 'bg-[#0E1011] text-[#f5f5f5]' : 'bg-white text-[#222222]'}`}>
+                      <div className="translate-y-0 transition-transform duration-300 ease-in-out group-hover:-translate-y-[150%]">View Project</div>
+                      <div className="absolute translate-y-[150%] transition-transform duration-300 ease-in-out group-hover:translate-y-0">View Project</div>
+                    </button></Link>
                 </div>
               </div>
 
@@ -424,7 +425,7 @@ const Home = ({ isDarkMode, setIsDarkMode }) => {
                 </div>
 
                 {/* Three Column Links */}
-                <div className="grid grid-cols-3 gap-8">
+                <div className="grid grid-cols-3 gap-8 mb-3">
                   {/* Pages Column */}
                   <div>
                     <h4 className={`text-sm font-medium mb-4 transition-colors duration-300 ${isDarkMode ? 'text-[#f5f5f5]' : 'text-[#222222]'}`}>
@@ -444,17 +445,17 @@ const Home = ({ isDarkMode, setIsDarkMode }) => {
                   </div>
 
                   {/* Work Column */}
+            
                   <div>
                     <h4 className={`text-sm font-medium mb-4 transition-colors duration-300 ${isDarkMode ? 'text-[#f5f5f5]' : 'text-[#222222]'}`}>
-                      Work
+                      CMS
                     </h4>
                     <div className="space-y-3">
-                      <button disabled className={`block text-sm transition-colors duration-300 cursor-not-allowed ${isDarkMode ? 'text-[#a5a5a5]' : 'text-[#6B6C6C]'}`}>
-                        Projects
-                      </button>
-                      <button disabled className={`block text-sm transition-colors duration-300 cursor-not-allowed ${isDarkMode ? 'text-[#a5a5a5]' : 'text-[#6B6C6C]'}`}>
-                        Case Studies
-                      </button>
+                      <Link to="/project">
+                        <button className={`block text-sm transition-colors duration-300 cursor-pointer ${isDarkMode ? 'text-[#a5a5a5]' : 'text-[#6B6C6C]'}`}>
+                          Projects
+                        </button>
+                      </Link>
                     </div>
                   </div>
 
@@ -485,11 +486,12 @@ const Home = ({ isDarkMode, setIsDarkMode }) => {
                 </div>
 
                 {/* Copyright */}
-                <div className={`mt-8 pt-6 border-t transition-colors duration-300 ${isDarkMode ? 'border-[#2a2a2a]' : 'border-[#e0e0e0]'}`}>
-                  <p className={`text-xs transition-colors duration-300 ${isDarkMode ? 'text-[#a5a5a5]' : 'text-[#6B6C6C]'}`}>
-                    © 2025 Mark Zaragoza. All rights reserved.
+                <div className={` pt-3  border-t transition-colors duration-300 text-center ${isDarkMode ? 'border-[#2a2a2a]' : 'border-[#e0e0e0]'}`}>
+                  <p className={`text-xs  transition-colors duration-300 ${isDarkMode ? 'text-[#b0b0b0]' : 'text-[#555555]'}`}>
+                    © 2025 — Crafted by yours truly 😊
                   </p>
                 </div>
+
               </div>
             </div>
           </div>

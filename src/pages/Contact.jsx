@@ -1,7 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { gsap } from 'gsap';
-import { ArrowRight, ArrowUpRight } from 'lucide-react';
+import { ArrowRight, ArrowUpRight, Instagram, Github, Phone } from 'lucide-react';
+import mkrn from "../assets/makren.png";
+
 
 const Contact = ({ isDarkMode, setIsDarkMode }) => {
     const [formData, setFormData] = useState({
@@ -19,11 +21,17 @@ const Contact = ({ isDarkMode, setIsDarkMode }) => {
     const formFieldsRef = useRef([]);
     const menuCardsRef = useRef([]);
     const overlayRef = useRef(null);
+    const socialLinksRef = useRef([]);
 
     const menuItems = [
         { label: "Home", path: "/" },
         { label: "Work", path: "/work" },
         { label: "About", path: "/about" }
+    ];
+
+    const socialLinks = [
+        { name: "Instagram", url: "https://www.instagram.com/makrenzar/", icon: Instagram },
+        { name: "GitHub", url: "https://github.com/makrenzar", icon: Github },
     ];
 
     // Auto-hide status after 3 seconds
@@ -284,10 +292,143 @@ const Contact = ({ isDarkMode, setIsDarkMode }) => {
                                     </button>
                                 </form>
                             </div>
+                            <div className="space-y-3 mb-3">
+                                <div className="grid grid-cols-2 gap-3">
+                                    {socialLinks.map((social, index) => {
+                                        const IconComponent = social.icon;
+                                        return (
+                                            <a key={index} ref={el => socialLinksRef.current[index] = el} href={social.url} target="_blank" rel="noopener noreferrer" className={`group rounded-lg px-5 py-4 flex items-center justify-between transition-all duration-300 cursor-pointer overflow-hidden relative ${isDarkMode ? 'bg-[#191B1C] hover:bg-[#222222]' : 'bg-[#f6f6f6] hover:bg-[#ececec]'}`}>
+                                                <div className="relative overflow-hidden">
+                                                    <span className={`text-sm block translate-y-0 transition-transform duration-300 ease-in-out group-hover:-translate-y-[150%] ${isDarkMode ? 'text-[#f5f5f5]' : 'text-[#222222]'}`}>{social.name}</span>
+                                                    <span className={`text-sm absolute top-0 left-0 translate-y-[150%] transition-transform duration-300 ease-in-out group-hover:translate-y-0 ${isDarkMode ? 'text-[#f5f5f5]' : 'text-[#222222]'}`}>{social.name}</span>
+                                                </div>
+                                                <div className={`relative overflow-hidden flex items-center justify-center ${isDarkMode ? 'text-[#f5f5f5]' : 'text-[#222222]'}`}>
+                                                    <div className="translate-y-0 transition-transform duration-300 ease-in-out group-hover:-translate-y-[150%]">
+                                                        <IconComponent size={17} strokeWidth={1.5} />
+                                                    </div>
+                                                    <div className="absolute translate-y-[150%] transition-transform duration-300 ease-in-out group-hover:translate-y-0">
+                                                        <IconComponent size={17} strokeWidth={1.5} />
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        );
+                                    })}
+                                </div>
+
+                                <Link to="/contact" ref={el => socialLinksRef.current[2] = el} className={`group rounded-lg px-5 py-4 flex items-center justify-between transition-all duration-300 cursor-pointer overflow-hidden relative ${isDarkMode ? 'bg-[#f5f5f5] text-[#0E1011]' : 'bg-[#0E1011] text-[#f5f5f5]'}`}>
+                                    <div className="relative overflow-hidden">
+                                        <span className="text-sm font-medium block translate-y-0 transition-transform duration-300 ease-in-out group-hover:-translate-y-[150%]">Book a Call</span>
+                                        <span className="text-sm font-medium absolute top-0 left-0 translate-y-[150%] transition-transform duration-300 ease-in-out group-hover:translate-y-0">Book a Call</span>
+                                    </div>
+                                    <div className="relative overflow-hidden flex items-center justify-center">
+                                        <div className="translate-y-0 transition-transform duration-300 ease-in-out group-hover:-translate-y-[150%]">
+                                            <Phone size={17} strokeWidth={1.5} />
+                                        </div>
+                                        <div className="absolute translate-y-[150%] transition-transform duration-300 ease-in-out group-hover:translate-y-0">
+                                            <Phone size={17} strokeWidth={1.5} />
+                                        </div>
+                                    </div>
+                                </Link>
+                            </div>
+
+                            {/* FOOTER SECTION */}
+                            <div ref={footerRef} className={`rounded-lg p-6 md:p-8 transition-colors duration-300 ${isDarkMode ? 'bg-[#191B1C]' : 'bg-[#F6F6F6]'}`}>
+                                {/* Profile Section */}
+                                <div className="relative z-10 mb-10 flex items-center">
+                                    <div className="relative z-10">
+                                        <Link to="/">
+                                            <img alt="Photo of Mark Lawrence Zaragoza" fetchPriority="high" decoding="async" className="h-[56px] w-[56px] rounded-full object-cover" src={mkrn} />
+                                        </Link>
+                                    </div>
+                                    <div className="ml-4">
+                                        <h1 className={`text-base font-[450] transition-colors duration-300 ${isDarkMode ? 'text-[#f5f5f5]' : 'text-[#222222]'}`}>
+                                            <Link to="/">Mark Zaragoza</Link>
+                                        </h1>
+                                        <div className="relative overflow-hidden h-5 group cursor-pointer">
+                                            <p className={`text-sm transition-transform duration-300 ease-in-out ${isDarkMode ? 'text-[#a5a5a5]' : 'text-[#6B6C6C]'} translate-y-0 group-hover:-translate-y-[150%]`}>
+                                                Frontend Developer
+                                            </p>
+                                            <p className={`text-sm absolute top-0 left-0 transition-transform duration-300 ease-in-out ${isDarkMode ? 'text-[#a5a5a5]' : 'text-[#6B6C6C]'} translate-y-[150%] group-hover:translate-y-0`}>
+                                                Graphic Designer
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {/* Three Column Links */}
+                                <div className="grid grid-cols-3 gap-8 mb-3">
+                                    {/* Pages Column */}
+                                    <div>
+                                        <h4 className={`text-sm font-medium mb-4 transition-colors duration-300 ${isDarkMode ? 'text-[#f5f5f5]' : 'text-[#222222]'}`}>
+                                            Pages
+                                        </h4>
+                                        <div className="space-y-3">
+                                            <Link to="/" className={`block text-sm transition-colors duration-300 hover:opacity-70 ${isDarkMode ? 'text-[#a5a5a5]' : 'text-[#6B6C6C]'}`}>
+                                                Home
+                                            </Link>
+                                            <Link to="/about" className={`block text-sm transition-colors duration-300 hover:opacity-70 ${isDarkMode ? 'text-[#a5a5a5]' : 'text-[#6B6C6C]'}`}>
+                                                About
+                                            </Link>
+                                            <Link to="/contact" className={`block text-sm transition-colors duration-300 hover:opacity-70 ${isDarkMode ? 'text-[#a5a5a5]' : 'text-[#6B6C6C]'}`}>
+                                                Contact
+                                            </Link>
+                                        </div>
+                                    </div>
+
+                                    {/* Work Column */}
+                                    {/* Work Column */}
+                                    <div>
+                                        <h4 className={`text-sm font-medium mb-4 transition-colors duration-300 ${isDarkMode ? 'text-[#f5f5f5]' : 'text-[#222222]'}`}>
+                                            CMS
+                                        </h4>
+                                        <div className="space-y-3">
+                                            <Link to="/project">
+                                                <button className={`block text-sm transition-colors duration-300 cursor-pointer ${isDarkMode ? 'text-[#a5a5a5]' : 'text-[#6B6C6C]'}`}>
+                                                    Projects
+                                                </button>
+                                            </Link>
+                                        </div>
+                                    </div>
+
+                                    {/* Social Column */}
+                                    <div>
+                                        <h4 className={`text-sm font-medium mb-4 transition-colors duration-300 ${isDarkMode ? 'text-[#f5f5f5]' : 'text-[#222222]'}`}>
+                                            Social
+                                        </h4>
+                                        <div className="space-y-3">
+                                            <a
+                                                href="https://www.instagram.com/makrenzar/"
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className={`block text-sm transition-colors duration-300 hover:opacity-70 ${isDarkMode ? 'text-[#a5a5a5]' : 'text-[#6B6C6C]'}`}
+                                            >
+                                                Instagram
+                                            </a>
+                                            <a
+                                                href="https://github.com/makrenzar"
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className={`block text-sm transition-colors duration-300 hover:opacity-70 ${isDarkMode ? 'text-[#a5a5a5]' : 'text-[#6B6C6C]'}`}
+                                            >
+                                                GitHub
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {/* Copyright */}
+                                <div className={` pt-3  border-t transition-colors duration-300 text-center ${isDarkMode ? 'border-[#2a2a2a]' : 'border-[#e0e0e0]'}`}>
+                                    <p className={`text-xs  transition-colors duration-300 ${isDarkMode ? 'text-[#b0b0b0]' : 'text-[#555555]'}`}>
+                                        © 2025 — Crafted by yours truly 😊
+                                    </p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
+
+
 
             {/* Menu Overlay */}
             {isMenuOpen && (
