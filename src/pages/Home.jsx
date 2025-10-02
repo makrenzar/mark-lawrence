@@ -270,7 +270,7 @@ const Home = ({ isDarkMode, setIsDarkMode }) => {
                   <Link to="/project">
                     <button className={`group cursor-pointer relative inline-flex h-7 md:h-9 items-center justify-center overflow-hidden rounded-md px-6 py-5 font-medium text-xs md:text-sm transition-colors duration-300 ${isDarkMode ? 'bg-[#0E1011] text-[#f5f5f5]' : 'bg-white text-[#222222]'}`}>
                       <div className="translate-y-0 transition-transform duration-300 ease-in-out group-hover:-translate-y-[150%]">View Project</div>
-                      <div className="absolute translate-y-[150%] transition-transform duration-300 ease-in-out group-hover:translate-y-0">View Project</div>
+                      <div className="absolute translate-y-[155%] transition-transform duration-300 ease-in-out group-hover:translate-y-0">View Project</div>
                     </button></Link>
                 </div>
               </div>
