@@ -24,8 +24,8 @@ const About = ({ isDarkMode, setIsDarkMode }) => {
   ];
 
   const experienceData = [
-    { title: "Digital Designer", year: "Present", description: "Designing marketing materials and providing technical support for dealership operations. Designed marketing materials including brochures, banners, social media posts, and promotional ads for BYD vehicle campaigns. Collaborated with the sales and marketing team to create visual content aligned with brand guidelines and local promotions. Edited and retouched photos for product showcases, and events. Provided general IT support including troubleshooting hardware and software issues, fixing printer and network problems, and maintaining office computer systems. Tools used: Canva, Photoshop, Figma." },
-    { title: "Full-Stack Developer", year: "2024", description: "Developed internal ERP systems for inventory and billing management. Worked with the development and testing teams to build scalable, high-performance solutions that met client needs. Technologies used: HTML, CSS, Bootstrap, Javascript, PHP, SQL" }
+    { title: "Digital Designer", company: "BYD Iloilo", year: "Present", description: "Designing marketing materials and providing technical support for dealership operations. Designed marketing materials including brochures, banners, social media posts, and promotional ads for BYD vehicle campaigns. Collaborated with the sales and marketing team to create visual content aligned with brand guidelines and local promotions. Edited and retouched photos for product showcases, and events. Provided general IT support including troubleshooting hardware and software issues, fixing printer and network problems, and maintaining office computer systems. Tools used: Canva, Photoshop, Figma." },
+    { title: "Full-Stack Developer", company: "Blaqbox Technology Corporation", year: "2024", description: "Developed internal ERP systems for inventory and billing management. Worked with the development and testing teams to build scalable, high-performance solutions that met client needs. Technologies used: HTML, CSS, Bootstrap, Javascript, PHP, SQL" }
   ];
 
   const menuItems = [
@@ -198,7 +198,7 @@ const About = ({ isDarkMode, setIsDarkMode }) => {
                         Frontend Developer
                       </p>
                       <p className={`text-sm absolute top-0 left-0 transition-transform duration-300 ease-in-out ${isDarkMode ? 'text-[#a5a5a5]' : 'text-[#6B6C6C]'} translate-y-[150%] group-hover:translate-y-0`}>
-                        Graphic Designer
+                        Digital Designer
                       </p>
                     </div>
                   </div>
@@ -209,7 +209,7 @@ const About = ({ isDarkMode, setIsDarkMode }) => {
                     About Me
                   </h1>
                   <p className={`text-base leading-7 transition-colors duration-300 ${isDarkMode ? 'text-[#a5a5a5]' : 'text-[#6B6C6C]'}`}>
-                    Passionate about creating innovative and user-friendly websites as a frontend developer, and crafting visually compelling designs as a graphics designer.
+                    Passionate about creating innovative and user-friendly websites as a frontend developer, and crafting visually compelling designs as a digital designer.
                   </p>
                 </div>
               </div>
@@ -241,7 +241,7 @@ const About = ({ isDarkMode, setIsDarkMode }) => {
                             {exp.title}
                           </span>
                           <span className={`text-sm font-medium absolute top-0 left-0 translate-y-[150%] transition-transform duration-300 ease-in-out group-hover:translate-y-0 ${isDarkMode ? 'text-[#f5f5f5]' : 'text-[#222222]'}`}>
-                            {exp.title}
+                            {exp.company}
                           </span>
                         </div>
                         <div className="flex items-center gap-4">
@@ -323,7 +323,7 @@ const About = ({ isDarkMode, setIsDarkMode }) => {
                         Frontend Developer
                       </p>
                       <p className={`text-sm absolute top-0 left-0 transition-transform duration-300 ease-in-out ${isDarkMode ? 'text-[#6B6C6C]' : 'text-[#a5a5a5]'} translate-y-[150%] group-hover:translate-y-0`}>
-                        Graphic Designer
+                        Digital Designer
                       </p>
                     </div>
                   </div>

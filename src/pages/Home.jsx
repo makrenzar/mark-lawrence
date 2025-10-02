@@ -238,7 +238,7 @@ const Home = ({ isDarkMode, setIsDarkMode }) => {
                         Frontend Developer
                       </p>
                       <p className={`text-sm absolute top-0 left-0 transition-transform duration-300 ease-in-out ${isDarkMode ? 'text-[#a5a5a5]' : 'text-[#6B6C6C]'} translate-y-[150%] group-hover:translate-y-0`}>
-                        Graphic Designer
+                        Digital Designer
                       </p>
                     </div>
                   </div>
@@ -249,7 +249,7 @@ const Home = ({ isDarkMode, setIsDarkMode }) => {
                     Bringing Ideas to Life, <br />Seamlessly.
                   </p>
                   <p className={`mb-4 text-base leading-6 transition-colors duration-300 ${isDarkMode ? 'text-[#a5a5a5]' : 'text-[#6B6C6C]'}`}>
-                    As a frontend developer and graphic designer, I craft modern websites that blend stunning visuals with smooth user experiences. From design to deployment, I focus on making every detail both innovative and user-friendly.
+                    As a frontend developer and digital designer, I craft modern websites that blend stunning visuals with smooth user experiences. From design to deployment, I focus on making every detail both innovative and user-friendly.
                   </p>
                 </div>
 
@@ -419,7 +419,7 @@ const Home = ({ isDarkMode, setIsDarkMode }) => {
                         Frontend Developer
                       </p>
                       <p className={`text-sm absolute top-0 left-0 transition-transform duration-300 ease-in-out ${isDarkMode ? 'text-[#6B6C6C]' : 'text-[#a5a5a5]'} translate-y-[150%] group-hover:translate-y-0`}>
-                        Graphic Designer
+                        Digital Designer
                       </p>
                     </div>
                   </div>

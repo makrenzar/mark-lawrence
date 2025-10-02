@@ -350,7 +350,7 @@ const Contact = ({ isDarkMode, setIsDarkMode }) => {
                                                 Frontend Developer
                                             </p>
                                             <p className={`text-sm absolute top-0 left-0 transition-transform duration-300 ease-in-out ${isDarkMode ? 'text-[#6B6C6C]' : 'text-[#a5a5a5]'} translate-y-[150%] group-hover:translate-y-0`}>
-                                                Graphic Designer
+                                                Digital Designer
                                             </p>
                                         </div>
                                     </div>
