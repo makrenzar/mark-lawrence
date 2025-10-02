@@ -5,11 +5,11 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Marquee from "react-fast-marquee";
 import { Facebook, Instagram, Github, Pin, Mail, ArrowRight, ArrowUpRight, ArrowDown, CheckIcon, Plus, Phone } from 'lucide-react';
 import mkrn from "../assets/makren.png";
-import img1 from "../assets/1.png";
-import img2 from "../assets/2.png";
-import img3 from "../assets/3.png";
-import img4 from "../assets/4.png";
-import img5 from "../assets/5.png";
+import img1 from "../assets/01.png";
+import img2 from "../assets/02.png";
+import img3 from "../assets/03.png";
+import img4 from "../assets/04.png";
+import img5 from "../assets/05.png";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -234,7 +234,7 @@ const Home = ({ isDarkMode, setIsDarkMode }) => {
                       <Link to="/">Mark Zaragoza</Link>
                     </h1>
                     <div className="relative overflow-hidden h-5 group cursor-pointer">
-                      <p className={`text-sm transition-transform duration-300 ease-in-out ${isDarkMode ? 'text-[#a5a5a5]' : 'text-[#6B6C6C]'} translate-y-0 group-hover:-translate-y-[150%]`}>
+                      <p className={`text-sm transition-transform duration-300 ease-in-out ${isDarkMode ? 'text-[#6B6C6C]' : 'text-[#a5a5a5]'} translate-y-0 group-hover:-translate-y-[150%]`}>
                         Frontend Developer
                       </p>
                       <p className={`text-sm absolute top-0 left-0 transition-transform duration-300 ease-in-out ${isDarkMode ? 'text-[#a5a5a5]' : 'text-[#6B6C6C]'} translate-y-[150%] group-hover:translate-y-0`}>
@@ -255,7 +255,7 @@ const Home = ({ isDarkMode, setIsDarkMode }) => {
 
                 <div className="flex justify-start gap-2 mt-3 md:mt-6">
                   <Link to="/contact">
-                    <button className={`group cursor-pointer relative inline-flex h-7 md:h-9 items-center justify-center overflow-hidden rounded-md px-6 py-5 font-medium text-sm transition-colors duration-300 ${isDarkMode ? 'bg-white text-[#222222]' : 'bg-[#0E1011] text-[#f5f5f5]'}`}>
+                    <button className={`group cursor-pointer relative inline-flex h-7 md:h-9 items-center justify-center overflow-hidden rounded-md px-6 py-5 font-medium text-xs md:text-sm transition-colors duration-300 ${isDarkMode ? 'bg-white text-[#222222]' : 'bg-[#0E1011] text-[#f5f5f5]'}`}>
                       <div className="translate-y-0 transition-transform duration-300 ease-in-out group-hover:-translate-y-[150%] flex items-center gap-2">
                         Get in Touch
                         <Mail size={17} strokeWidth={1.5} />
@@ -268,14 +268,14 @@ const Home = ({ isDarkMode, setIsDarkMode }) => {
                   </Link>
 
                   <Link to="/project">
-                    <button className={`group cursor-pointer relative inline-flex h-7 md:h-9 items-center justify-center overflow-hidden rounded-md px-6 py-5 font-medium text-sm transition-colors duration-300 ${isDarkMode ? 'bg-[#0E1011] text-[#f5f5f5]' : 'bg-white text-[#222222]'}`}>
+                    <button className={`group cursor-pointer relative inline-flex h-7 md:h-9 items-center justify-center overflow-hidden rounded-md px-6 py-5 font-medium text-xs md:text-sm transition-colors duration-300 ${isDarkMode ? 'bg-[#0E1011] text-[#f5f5f5]' : 'bg-white text-[#222222]'}`}>
                       <div className="translate-y-0 transition-transform duration-300 ease-in-out group-hover:-translate-y-[150%]">View Project</div>
                       <div className="absolute translate-y-[150%] transition-transform duration-300 ease-in-out group-hover:translate-y-0">View Project</div>
                     </button></Link>
                 </div>
               </div>
 
-              <div ref={marqueeRef} className="mb-3">
+              <div  className="mb-3">
                 <Marquee pauseOnHover={true} gradient={false} speed={20} direction="right">
                   {works.map((work, index) => (
                     <div key={index} className="relative shrink-0 mr-3">
@@ -400,8 +400,9 @@ const Home = ({ isDarkMode, setIsDarkMode }) => {
                   </div>
                 </Link>
               </div>
+
               {/* FOOTER SECTION */}
-              <div ref={footerRef} className={`rounded-lg p-6 md:p-8 transition-colors duration-300 ${isDarkMode ? 'bg-[#191B1C]' : 'bg-[#F6F6F6]'}`}>
+              <div ref={footerRef} className={`rounded-lg p-6 md:p-8 transition-colors duration-300 ${isDarkMode ? 'bg-[#f6f6f6]' : 'bg-[#0E1011]'}`}>
                 {/* Profile Section */}
                 <div className="relative z-10 mb-10 flex items-center">
                   <div className="relative z-10">
@@ -410,14 +411,14 @@ const Home = ({ isDarkMode, setIsDarkMode }) => {
                     </Link>
                   </div>
                   <div className="ml-4">
-                    <h1 className={`text-base font-[450] transition-colors duration-300 ${isDarkMode ? 'text-[#f5f5f5]' : 'text-[#222222]'}`}>
+                    <h1 className={`text-base font-[450] transition-colors duration-300 ${isDarkMode ? 'text-[#222222]' : 'text-[#f5f5f5]'}`}>
                       <Link to="/">Mark Zaragoza</Link>
                     </h1>
                     <div className="relative overflow-hidden h-5 group cursor-pointer">
-                      <p className={`text-sm transition-transform duration-300 ease-in-out ${isDarkMode ? 'text-[#a5a5a5]' : 'text-[#6B6C6C]'} translate-y-0 group-hover:-translate-y-[150%]`}>
+                      <p className={`text-sm transition-transform duration-300 ease-in-out ${isDarkMode ? 'text-[#6B6C6C]' : 'text-[#a5a5a5]'} translate-y-0 group-hover:-translate-y-[150%]`}>
                         Frontend Developer
                       </p>
-                      <p className={`text-sm absolute top-0 left-0 transition-transform duration-300 ease-in-out ${isDarkMode ? 'text-[#a5a5a5]' : 'text-[#6B6C6C]'} translate-y-[150%] group-hover:translate-y-0`}>
+                      <p className={`text-sm absolute top-0 left-0 transition-transform duration-300 ease-in-out ${isDarkMode ? 'text-[#6B6C6C]' : 'text-[#a5a5a5]'} translate-y-[150%] group-hover:translate-y-0`}>
                         Graphic Designer
                       </p>
                     </div>
@@ -428,17 +429,17 @@ const Home = ({ isDarkMode, setIsDarkMode }) => {
                 <div className="grid grid-cols-3 gap-8 mb-3">
                   {/* Pages Column */}
                   <div>
-                    <h4 className={`text-sm font-medium mb-4 transition-colors duration-300 ${isDarkMode ? 'text-[#f5f5f5]' : 'text-[#222222]'}`}>
+                    <h4 className={`text-sm font-medium mb-4 transition-colors duration-300 ${isDarkMode ? 'text-[#222222]' : 'text-[#f5f5f5]'}`}>
                       Pages
                     </h4>
                     <div className="space-y-3">
-                      <Link to="/" className={`block text-sm transition-colors duration-300 hover:opacity-70 ${isDarkMode ? 'text-[#a5a5a5]' : 'text-[#6B6C6C]'}`}>
+                      <Link to="/" className={`block text-sm transition-colors duration-300 hover:opacity-70 ${isDarkMode ? 'text-[#6B6C6C]' : 'text-[#a5a5a5]'}`}>
                         Home
                       </Link>
-                      <Link to="/about" className={`block text-sm transition-colors duration-300 hover:opacity-70 ${isDarkMode ? 'text-[#a5a5a5]' : 'text-[#6B6C6C]'}`}>
+                      <Link to="/about" className={`block text-sm transition-colors duration-300 hover:opacity-70 ${isDarkMode ? 'text-[#6B6C6C]' : 'text-[#a5a5a5]'}`}>
                         About
                       </Link>
-                      <Link to="/contact" className={`block text-sm transition-colors duration-300 hover:opacity-70 ${isDarkMode ? 'text-[#a5a5a5]' : 'text-[#6B6C6C]'}`}>
+                      <Link to="/contact" className={`block text-sm transition-colors duration-300 hover:opacity-70 ${isDarkMode ? 'text-[#6B6C6C]' : 'text-[#a5a5a5]'}`}>
                         Contact
                       </Link>
                     </div>
@@ -447,12 +448,12 @@ const Home = ({ isDarkMode, setIsDarkMode }) => {
                   {/* Work Column */}
             
                   <div>
-                    <h4 className={`text-sm font-medium mb-4 transition-colors duration-300 ${isDarkMode ? 'text-[#f5f5f5]' : 'text-[#222222]'}`}>
+                    <h4 className={`text-sm font-medium mb-4 transition-colors duration-300 ${isDarkMode ? 'text-[#222222]' : 'text-[#f5f5f5]'}`}>
                       CMS
                     </h4>
                     <div className="space-y-3">
                       <Link to="/project">
-                        <button className={`block text-sm transition-colors duration-300 cursor-pointer ${isDarkMode ? 'text-[#a5a5a5]' : 'text-[#6B6C6C]'}`}>
+                        <button className={`block text-sm transition-colors duration-300 cursor-pointer ${isDarkMode ? 'text-[#6B6C6C]' : 'text-[#a5a5a5]'}`}>
                           Projects
                         </button>
                       </Link>
@@ -461,7 +462,7 @@ const Home = ({ isDarkMode, setIsDarkMode }) => {
 
                   {/* Social Column */}
                   <div>
-                    <h4 className={`text-sm font-medium mb-4 transition-colors duration-300 ${isDarkMode ? 'text-[#f5f5f5]' : 'text-[#222222]'}`}>
+                    <h4 className={`text-sm font-medium mb-4 transition-colors duration-300 ${isDarkMode ? 'text-[#222222]' : 'text-[#f5f5f5]'}`}>
                       Social
                     </h4>
                     <div className="space-y-3">
@@ -469,7 +470,7 @@ const Home = ({ isDarkMode, setIsDarkMode }) => {
                         href="https://www.instagram.com/makrenzar/"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className={`block text-sm transition-colors duration-300 hover:opacity-70 ${isDarkMode ? 'text-[#a5a5a5]' : 'text-[#6B6C6C]'}`}
+                        className={`block text-sm transition-colors duration-300 hover:opacity-70 ${isDarkMode ? 'text-[#6B6C6C]' : 'text-[#a5a5a5]'}`}
                       >
                         Instagram
                       </a>
@@ -477,7 +478,7 @@ const Home = ({ isDarkMode, setIsDarkMode }) => {
                         href="https://github.com/makrenzar"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className={`block text-sm transition-colors duration-300 hover:opacity-70 ${isDarkMode ? 'text-[#a5a5a5]' : 'text-[#6B6C6C]'}`}
+                        className={`block text-sm transition-colors duration-300 hover:opacity-70 ${isDarkMode ? 'text-[#6B6C6C]' : 'text-[#a5a5a5]'}`}
                       >
                         GitHub
                       </a>
@@ -487,8 +488,8 @@ const Home = ({ isDarkMode, setIsDarkMode }) => {
 
                 {/* Copyright */}
                 <div className={` pt-3  border-t transition-colors duration-300 text-center ${isDarkMode ? 'border-[#2a2a2a]' : 'border-[#e0e0e0]'}`}>
-                  <p className={`text-xs  transition-colors duration-300 ${isDarkMode ? 'text-[#b0b0b0]' : 'text-[#555555]'}`}>
-                    © 2025 — Crafted by yours truly 😊
+                  <p className={`text-xs  transition-colors duration-300  ${isDarkMode ? 'text-[#222222]' : 'text-[#f5f5f5]'}`}>
+                    © 2025 — Mark Zaragoza
                   </p>
                 </div>
 
