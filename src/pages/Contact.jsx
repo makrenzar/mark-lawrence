@@ -418,7 +418,7 @@ const Contact = ({ isDarkMode, setIsDarkMode }) => {
                                 </div>
 
                                 {/* Copyright */}
-                                <div className={` pt-3  border-t transition-colors duration-300 text-center ${isDarkMode ? 'border-[#2a2a2a]' : 'border-[#e0e0e0]'}`}>
+                                <div className={` pt-3  border-t transition-colors duration-300 text-center ${isDarkMode ? 'border-[#a5a5a5]' : 'border-[#6B6C6C]'}`}>
                                     <p className={`text-xs  transition-colors duration-300  ${isDarkMode ? 'text-[#222222]' : 'text-[#f5f5f5]'}`}>
                                         © 2025 — Mark Zaragoza
                                     </p>
