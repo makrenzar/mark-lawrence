@@ -316,20 +316,20 @@ const Contact = ({ isDarkMode, setIsDarkMode }) => {
                                     })}
                                 </div>
 
-                                <Link to="/contact" ref={el => socialLinksRef.current[2] = el} className={`group rounded-lg px-5 py-4 flex items-center justify-between transition-all duration-300 cursor-pointer overflow-hidden relative ${isDarkMode ? 'bg-[#f5f5f5] text-[#0E1011]' : 'bg-[#0E1011] text-[#f5f5f5]'}`}>
-                                    <div className="relative overflow-hidden">
-                                        <span className="text-sm font-medium block translate-y-0 transition-transform duration-300 ease-in-out group-hover:-translate-y-[150%]">Schedule a Call</span>
-                                        <span className="text-sm font-medium absolute top-0 left-0 translate-y-[150%] transition-transform duration-300 ease-in-out group-hover:translate-y-0">Schedule a Call</span>
-                                    </div>
-                                    <div className="relative overflow-hidden flex items-center justify-center">
-                                        <div className="translate-y-0 transition-transform duration-300 ease-in-out group-hover:-translate-y-[150%]">
-                                            <Phone size={17} strokeWidth={1.5} />
-                                        </div>
-                                        <div className="absolute translate-y-[150%] transition-transform duration-300 ease-in-out group-hover:translate-y-0">
-                                            <Phone size={17} strokeWidth={1.5} />
-                                        </div>
-                                    </div>
-                                </Link>
+                               <a href='https://calendly.com/markzaragoza301/30min' target='_blank' ref={el => socialLinksRef.current[2] = el} className={`group rounded-lg px-5 py-4 flex items-center justify-between transition-all duration-300 cursor-pointer overflow-hidden relative ${isDarkMode ? 'bg-[#f5f5f5] text-[#0E1011]' : 'bg-[#0E1011] text-[#f5f5f5]'}`}>
+                                               <div className="relative overflow-hidden">
+                                                 <span className="text-sm font-medium block translate-y-0 transition-transform duration-300 ease-in-out group-hover:-translate-y-[150%]">Schedule a Call</span>
+                                                 <span className="text-sm font-medium absolute top-0 left-0 translate-y-[150%] transition-transform duration-300 ease-in-out group-hover:translate-y-0">Schedule a Call</span>
+                                               </div>
+                                               <div className="relative overflow-hidden flex items-center justify-center">
+                                                 <div className="translate-y-0 transition-transform duration-300 ease-in-out group-hover:-translate-y-[150%]">
+                                                   <Phone size={17} strokeWidth={1.5} />
+                                                 </div>
+                                                 <div className="absolute translate-y-[150%] transition-transform duration-300 ease-in-out group-hover:translate-y-0">
+                                                   <Phone size={17} strokeWidth={1.5} />
+                                                 </div>
+                                               </div>
+                                             </a>
                             </div>
 
                             {/* FOOTER SECTION */}

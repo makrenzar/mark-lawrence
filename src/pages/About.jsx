@@ -290,7 +290,7 @@ const About = ({ isDarkMode, setIsDarkMode }) => {
                   })}
                 </div>
 
-                <Link to="/contact" ref={el => socialLinksRef.current[2] = el} className={`group rounded-lg px-5 py-4 flex items-center justify-between transition-all duration-300 cursor-pointer overflow-hidden relative ${isDarkMode ? 'bg-[#f5f5f5] text-[#0E1011]' : 'bg-[#0E1011] text-[#f5f5f5]'}`}>
+                <a href='https://calendly.com/markzaragoza301/30min' target='_blank' ref={el => socialLinksRef.current[2] = el} className={`group rounded-lg px-5 py-4 flex items-center justify-between transition-all duration-300 cursor-pointer overflow-hidden relative ${isDarkMode ? 'bg-[#f5f5f5] text-[#0E1011]' : 'bg-[#0E1011] text-[#f5f5f5]'}`}>
                   <div className="relative overflow-hidden">
                     <span className="text-sm font-medium block translate-y-0 transition-transform duration-300 ease-in-out group-hover:-translate-y-[150%]">Schedule a Call</span>
                     <span className="text-sm font-medium absolute top-0 left-0 translate-y-[150%] transition-transform duration-300 ease-in-out group-hover:translate-y-0">Schedule a Call</span>
@@ -303,9 +303,9 @@ const About = ({ isDarkMode, setIsDarkMode }) => {
                       <Phone size={17} strokeWidth={1.5} />
                     </div>
                   </div>
-                </Link>
+                </a>
               </div>
- {/* FOOTER SECTION */}
+              {/* FOOTER SECTION */}
               <div ref={footerRef} className={`rounded-lg p-6 md:p-8 transition-colors duration-300 ${isDarkMode ? 'bg-[#f6f6f6]' : 'bg-[#0E1011]'}`}>
                 {/* Profile Section */}
                 <div className="relative z-10 mb-10 flex items-center">
@@ -350,7 +350,7 @@ const About = ({ isDarkMode, setIsDarkMode }) => {
                   </div>
 
                   {/* Work Column */}
-            
+
                   <div>
                     <h4 className={`text-sm font-medium mb-4 transition-colors duration-300 ${isDarkMode ? 'text-[#222222]' : 'text-[#f5f5f5]'}`}>
                       CMS
