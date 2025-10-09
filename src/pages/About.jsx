@@ -1,12 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { gsap } from 'gsap';
-import { Instagram, Github, ArrowRight, ArrowUpRight, ArrowDown, Plus, Phone } from 'lucide-react';
+import { Instagram, Github, ArrowRight, ArrowUpRight, ArrowDown, Phone } from 'lucide-react';
 import mkrn from "../assets/makren.png";
 
 const About = ({ isDarkMode, setIsDarkMode }) => {
 
-  const [expandedExperience, setExpandedExperience] = useState([]);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   // Refs for animations
@@ -24,8 +23,10 @@ const About = ({ isDarkMode, setIsDarkMode }) => {
   ];
 
   const experienceData = [
-    { title: "Digital Designer", company: "BYD Iloilo", year: "Present", description: "Designing marketing materials and providing technical support for dealership operations. Designed marketing materials including brochures, banners, social media posts, and promotional ads for BYD vehicle campaigns. Collaborated with the sales and marketing team to create visual content aligned with brand guidelines and local promotions. Edited and retouched photos for product showcases, and events. Provided general IT support including troubleshooting hardware and software issues, fixing printer and network problems, and maintaining office computer systems. Tools used: Canva, Photoshop, Figma." },
-    { title: "Full-Stack Developer", company: "Blaqbox Technology Corporation", year: "2024", description: "Developed internal ERP systems for inventory and billing management. Worked with the development and testing teams to build scalable, high-performance solutions that met client needs. Technologies used: HTML, CSS, Bootstrap, Javascript, PHP, SQL" }
+    { title: "Digital Designer", company: "BYD Iloilo", year: "2025" },
+    { title: "Full-Stack Developer", company: "Blaqbox Technology Corporation", year: "2024" },
+    { title: "BS Information Technology", company: "STI West Negros University", year: "2024" },
+    { title: "Hello World! 👋🏻", company: "Hello World, my first creation", year: "2016" },
   ];
 
   const menuItems = [
@@ -36,14 +37,6 @@ const About = ({ isDarkMode, setIsDarkMode }) => {
 
   const toggleDarkMode = () => {
     setIsDarkMode(!isDarkMode);
-  };
-
-  const toggleExperience = (index) => {
-    setExpandedExperience(prev =>
-      prev.includes(index)
-        ? prev.filter(i => i !== index)
-        : [...prev, index]
-    );
   };
 
   // Animation on mount
@@ -232,10 +225,7 @@ const About = ({ isDarkMode, setIsDarkMode }) => {
                       ref={el => experienceItemsRef.current[index] = el}
                       className={`rounded-lg transition-all duration-300 ${isDarkMode ? 'bg-[#191B1C] hover:bg-[#222222]' : 'bg-[#f6f6f6] hover:bg-[#ececec]'}`}
                     >
-                      <button
-                        onClick={() => toggleExperience(index)}
-                        className="w-full p-5 text-left flex justify-between items-center cursor-pointer transition-all duration-300 rounded-lg group"
-                      >
+                      <div className="w-full p-5 flex justify-between items-center group">
                         <div className="relative overflow-hidden flex-grow">
                           <span className={`text-sm font-medium block translate-y-0 transition-transform duration-300 ease-in-out group-hover:-translate-y-[150%] ${isDarkMode ? 'text-[#f5f5f5]' : 'text-[#222222]'}`}>
                             {exp.title}
@@ -244,21 +234,13 @@ const About = ({ isDarkMode, setIsDarkMode }) => {
                             {exp.company}
                           </span>
                         </div>
-                        <div className="flex items-center gap-4">
-                          <span className={`text-sm transition-colors duration-300 ${isDarkMode ? 'text-[#a5a5a5]' : 'text-[#666]'}`}>
+                        <div className="relative overflow-hidden">
+                          <span className={`text-sm  block translate-y-0 transition-transform duration-300 ease-in-out group-hover:-translate-y-[150%] ${isDarkMode ? 'text-[#a5a5a5]' : 'text-[#666]'}`}>
                             {exp.year}
                           </span>
-                          <div className={`transform transition-all duration-300 ${expandedExperience.includes(index) ? 'rotate-45' : 'rotate-0'} ${isDarkMode ? 'text-[#f5f5f5]' : 'text-[#222222]'} rounded-sm w-5 h-5 flex items-center justify-center`}>
-                            <Plus size={17} strokeWidth={1.5} />
-                          </div>
-                        </div>
-                      </button>
-
-                      <div className={`overflow-hidden transition-all duration-300 ease-in-out ${expandedExperience.includes(index) ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}`}>
-                        <div className="px-5 pb-5">
-                          <p className={`text-[15px] leading-6 transition-colors duration-300 ${isDarkMode ? 'text-[#a5a5a5]' : 'text-[#6B6C6C]'}`}>
-                            {exp.description}
-                          </p>
+                          <span className={`text-sm   absolute top-0 left-0 translate-y-[150%] transition-transform duration-300 ease-in-out group-hover:translate-y-0 ${isDarkMode ? 'text-[#a5a5a5]' : 'text-[#666]'}`}>
+                            {exp.year}
+                          </span>
                         </div>
                       </div>
                     </div>
@@ -370,16 +352,16 @@ const About = ({ isDarkMode, setIsDarkMode }) => {
                       Social
                     </h4>
                     <div className="space-y-3">
-                      <a
-                        href="https://www.instagram.com/makrenzar/"
+
+                      <a href="https://www.instagram.com/makrenzar/"
                         target="_blank"
                         rel="noopener noreferrer"
                         className={`block text-sm transition-colors duration-300 hover:opacity-70 ${isDarkMode ? 'text-[#6B6C6C]' : 'text-[#a5a5a5]'}`}
                       >
                         Instagram
                       </a>
-                      <a
-                        href="https://github.com/makrenzar"
+
+                      <a href="https://github.com/makrenzar"
                         target="_blank"
                         rel="noopener noreferrer"
                         className={`block text-sm transition-colors duration-300 hover:opacity-70 ${isDarkMode ? 'text-[#6B6C6C]' : 'text-[#a5a5a5]'}`}
